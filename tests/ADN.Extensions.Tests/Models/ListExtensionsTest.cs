@@ -20,19 +20,6 @@ namespace ADN.Extensions.Tests
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void IndexOfMax_Exception_Value_Empty()
-        {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.IndexOfMax(new double[] { }));
-        }
-
-        [Fact]
-        public void IndexOfMax_Exception_Value_Null()
-        {
-            List<double> list = null;
-            Assert.Throws<ArgumentNullException>(() => list.IndexOfMax());
-        }
-
         [Theory]
         [ClassData(typeof(IndexOfMinData))]
         public void IndexOfMin(double[] values, int expected)
@@ -40,19 +27,6 @@ namespace ADN.Extensions.Tests
             var result = values.IndexOfMin();
 
             Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void IndexOfMin_Exception_Value_Empty()
-        {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.IndexOfMin(new double[] { }));
-        }
-
-        [Fact]
-        public void IndexOfMin_Exception_Value_Null()
-        {
-            List<double> list = null;
-            Assert.Throws<ArgumentNullException>(() => list.IndexOfMin());
         }
 
         [Theory]
@@ -130,22 +104,6 @@ namespace ADN.Extensions.Tests
             Assert.True(ok);
         }
 
-        [Fact]
-        public void Shuffle_Exception_Value_Empty()
-        {
-            double[] values = new double[] { };
-
-            Assert.Throws<ArgumentNullException>(() => values.Shuffle());
-        }
-
-        [Fact]
-        public void Shuffle_Exception_Value_Null()
-        {
-            int[] values = null;
-
-            Assert.Throws<ArgumentNullException>(() => values.Shuffle());
-        }
-
         [Theory]
         [ClassData(typeof(MedianData))]
         public void Median(double[] values, double expected)
@@ -153,12 +111,6 @@ namespace ADN.Extensions.Tests
             var result = values.Median();
 
             Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void Median_Exception_Value_Empty()
-        {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Median(new double[] { }));
         }
 
         [Fact]
@@ -178,19 +130,6 @@ namespace ADN.Extensions.Tests
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void Mean_Exception_Value_Empty()
-        {
-            List<double> list = new List<double>();
-            Assert.Throws<ArgumentNullException>(() => list.Mean());
-        }
-
-        [Fact]
-        public void Mean_Exception_Value_Null()
-        {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Mean(null));
-        }
-
         [Theory]
         [ClassData(typeof(MeanDelimitedData))]
         public void MeanDelimited(double[] values, int start, int end, double expected)
@@ -200,19 +139,6 @@ namespace ADN.Extensions.Tests
             var result = list.Mean(start, end);
 
             Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void MeanDelimited_Exception_Value_Empty()
-        {
-            List<double> list = new List<double>();
-            Assert.Throws<ArgumentNullException>(() => list.Mean(0, 0));
-        }
-
-        [Fact]
-        public void MeanDelimited_Exception_Value_Null()
-        {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Mean(null, 0, 0));
         }
 
         [Fact]
@@ -319,6 +245,7 @@ namespace ADN.Extensions.Tests
         {
             public IEnumerator<object[]> GetEnumerator()
             {
+                yield return new object[] { new double[] { }, 0 };
                 yield return new object[] { new double[] { 0 }, 0 };
                 yield return new object[] { new double[] { 1 }, 1 };
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 4.5 };

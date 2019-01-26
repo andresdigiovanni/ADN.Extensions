@@ -15,7 +15,6 @@ namespace ADN.Extensions
         /// <param name="bytes">The value.</param>
         /// <param name="separator">Hexadecimal values separator.</param>
         /// <returns>Hexadecimal string.</returns>
-        /// <exception cref="ArgumentNullException">bytes is null</exception>
         /// <example>
         /// <code lang="csharp">
         /// var array = new byte[] { 48, 49, 50, 51, 52 };
@@ -29,12 +28,6 @@ namespace ADN.Extensions
         /// </example>
         public static string BytesToHexa(this byte[] bytes, string separator = "")
         {
-            // Check arguments
-            if (bytes is null)
-            {
-                throw (new ArgumentNullException("bytes"));
-            }
-
             string sHexa = "";
 
             for (var i = 0; i < bytes.Length; i++)

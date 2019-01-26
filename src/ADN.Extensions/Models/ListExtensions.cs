@@ -15,7 +15,6 @@ namespace ADN.Extensions
         /// <typeparam name="T">The type of the elements of the list.</typeparam>
         /// <param name="values">The list of elements.</param>
         /// <returns>Index of the maximum value of the list.</returns>
-        /// <exception cref="ArgumentNullException">List is null or empty.</exception>
         /// <example>
         /// <code lang="csharp">
         /// var values = new double[] { 10, 11, 12, 13, 12, 11, 10 };
@@ -28,12 +27,6 @@ namespace ADN.Extensions
         /// </example>
         public static int IndexOfMax<T>(this IList<T> values) where T : IComparable
         {
-            // Check arguments
-            if (values is null || values.Count <= 0)
-            {
-                throw (new ArgumentNullException("values"));
-            }
-
             int maxIndex = -1;
             T maxValue = values[0];
 
@@ -55,7 +48,6 @@ namespace ADN.Extensions
         /// <typeparam name="T">The type of the elements of the list.</typeparam>
         /// <param name="values">The list of elements.</param>
         /// <returns>Index of the minimum value of the list.</returns>
-        /// <exception cref="ArgumentNullException">List is null or empty.</exception>
         /// <example>
         /// <code lang="csharp">
         /// var values = new double[] { 13, 12, 11, 10, 11, 12, 13 };
@@ -68,12 +60,6 @@ namespace ADN.Extensions
         /// </example>
         public static int IndexOfMin<T>(this IList<T> values) where T : IComparable
         {
-            // Check arguments
-            if (values is null || values.Count <= 0)
-            {
-                throw (new ArgumentNullException("values"));
-            }
-
             int minIndex = -1;
             T minValue = values[0];
 
@@ -117,7 +103,6 @@ namespace ADN.Extensions
         /// </summary>
         /// <typeparam name="T">The type of the elements of the list.</typeparam>
         /// <param name="values">The list of elements.</param>
-        /// <exception cref="ArgumentNullException">List is null or empty.</exception>
         /// <example>
         /// <code lang="csharp">
         /// var values = new double[] { 0, 1, 2, 3, 4, 5 };
@@ -126,12 +111,6 @@ namespace ADN.Extensions
         /// </example>
         public static void Shuffle<T>(this IList<T> values)
         {
-            // Check arguments
-            if (values is null || values.Count <= 0)
-            {
-                throw (new ArgumentNullException("values"));
-            }
-
             Random rng = new Random();
             int n = values.Count;
 
@@ -150,7 +129,6 @@ namespace ADN.Extensions
         /// </summary>
         /// <param name="values">The list of elements.</param>
         /// <returns>Index of the middle element.</returns>
-        /// <exception cref="ArgumentNullException">List is null or empty.</exception>
         /// <example>
         /// <code lang="csharp">
         /// var values = new double[] { 2, 3, 5, 1, 4 };
@@ -163,12 +141,6 @@ namespace ADN.Extensions
         /// </example>
         public static double Median(this IEnumerable<double> values)
         {
-            // Check arguments
-            if (values is null || values.Count() <= 0)
-            {
-                throw (new ArgumentNullException("values"));
-            }
-
             int midIndex = values.Count() / 2;
             var sorted = values.OrderBy(x => x).ToList();
 
@@ -185,7 +157,6 @@ namespace ADN.Extensions
         /// </summary>
         /// <param name="values">The list of elements.</param>
         /// <returns>Mean of the values.</returns>
-        /// <exception cref="ArgumentNullException">List is null or empty.</exception>
         /// <example>
         /// <code lang="csharp">
         /// var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -198,12 +169,6 @@ namespace ADN.Extensions
         /// </example>
         public static double Mean(this List<double> values)
         {
-            // Check arguments
-            if (values is null || values.Count <= 0)
-            {
-                throw (new ArgumentNullException("values"));
-            }
-
             return values.Count == 0 ? 0 : values.Mean(0, values.Count - 1);
         }
 
@@ -214,7 +179,6 @@ namespace ADN.Extensions
         /// <param name="start">Start index.</param>
         /// <param name="end">End index.</param>
         /// <returns>Mean of the values.</returns>
-        /// <exception cref="ArgumentNullException">List is null or empty.</exception>
         /// <exception cref="ArgumentOutOfRangeException">Start or end out of range.</exception>
         /// <example>
         /// <code lang="csharp">
@@ -230,22 +194,6 @@ namespace ADN.Extensions
         /// </example>
         public static double Mean(this List<double> values, int start, int end)
         {
-            // Check arguments
-            if (values is null || values.Count <= 0)
-            {
-                throw (new ArgumentNullException("values"));
-            }
-
-            if (start < 0 || start >= values.Count)
-            {
-                throw (new ArgumentOutOfRangeException("start"));
-            }
-
-            if (end < 0 || end >= values.Count)
-            {
-                throw (new ArgumentOutOfRangeException("end"));
-            }
-
             if (start > end)
             {
                 throw (new ArgumentOutOfRangeException("end"));

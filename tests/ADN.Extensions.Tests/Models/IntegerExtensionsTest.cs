@@ -34,12 +34,6 @@ namespace ADN.Extensions.Tests
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void RoundNumber_Exception_Step_Zero()
-        {
-            Assert.Throws<DivideByZeroException>(() => IntegerExtensions.RoundNumber(10, 0));
-        }
-
         [Theory]
         [InlineData(10, 2, 0, 8, 8)]
         [InlineData(10, 2, 0, 12, 10)]
@@ -58,12 +52,6 @@ namespace ADN.Extensions.Tests
             var result = value.RoundNumber(step, min, max);
 
             Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void RoundNumber_WithStep_Exception_Step_Zero()
-        {
-            Assert.Throws<DivideByZeroException>(() => IntegerExtensions.RoundNumber(10, 0, 11, 13));
         }
     }
 }

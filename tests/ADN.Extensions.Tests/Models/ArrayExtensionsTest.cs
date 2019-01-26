@@ -36,18 +36,6 @@ namespace ADN.Extensions.Tests
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void SetAllValues_Exception_value_Empty()
-        {
-            Assert.Throws<ArgumentNullException>(() => ArrayExtensions.SetAllValues(new double[] { }, 0));
-        }
-
-        [Fact]
-        public void SetAllValues_Exception_value_Null()
-        {
-            Assert.Throws<ArgumentNullException>(() => ArrayExtensions.SetAllValues(null, 0));
-        }
-
         [Theory]
         [ClassData(typeof(SplitByNumberOfDivisionsData))]
         public void SplitByNumberOfDivisions(double[] value, int numberOfDivisions, double[][] expected)
@@ -55,13 +43,6 @@ namespace ADN.Extensions.Tests
             var result = value.SplitByNumberOfDivisions(numberOfDivisions);
 
             Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void SplitByNumberOfDivisions_Exception_value_Null()
-        {
-            double[] value = null;
-            Assert.Throws<ArgumentNullException>(() => ArrayExtensions.SplitByNumberOfDivisions(value, 1));
         }
 
         [Fact]
@@ -80,13 +61,6 @@ namespace ADN.Extensions.Tests
         }
 
         [Fact]
-        public void SplitByNumberOfElementsInDivision_Exception_value_Null()
-        {
-            double[] value = null;
-            Assert.Throws<ArgumentNullException>(() => ArrayExtensions.SplitByNumberOfElementsInDivision(value, 1));
-        }
-
-        [Fact]
         public void SplitByNumberOfElementsInDivision_Exception_ZeroDivisions()
         {
             Assert.Throws<DivideByZeroException>(() => ArrayExtensions.SplitByNumberOfElementsInDivision(new double[0], 0));
@@ -102,12 +76,6 @@ namespace ADN.Extensions.Tests
         }
 
         [Fact]
-        public void SubArray_Exception_value_Empty()
-        {
-            Assert.Throws<ArgumentNullException>(() => ArrayExtensions.SubArray(new double[] { }, 0, 1));
-        }
-
-        [Fact]
         public void SubArray_Exception_value_Null()
         {
             double[] list = null;
@@ -120,27 +88,6 @@ namespace ADN.Extensions.Tests
         {
             double[] list = new double[] { 0, 1 };
             Assert.Throws<ArgumentOutOfRangeException>(() => ArrayExtensions.SubArray(list, -1, 1));
-        }
-
-        [Fact]
-        public void SubArray_Exception_Array_OutOfRange_Top()
-        {
-            double[] list = new double[] { 0, 1 };
-            Assert.Throws<ArgumentOutOfRangeException>(() => ArrayExtensions.SubArray(list, 2, 1));
-        }
-
-        [Fact]
-        public void SubArray_Exception_Length_OutOfRange_Bottom()
-        {
-            double[] list = new double[] { 0, 1 };
-            Assert.Throws<ArgumentOutOfRangeException>(() => ArrayExtensions.SubArray(list, 0, -1));
-        }
-
-        [Fact]
-        public void SubArray_Exception_Length_OutOfRange_Top()
-        {
-            double[] list = new double[] { 0, 1 };
-            Assert.Throws<ArgumentOutOfRangeException>(() => ArrayExtensions.SubArray(list, 0, 3));
         }
 
         public class ArrayEqualData : IEnumerable<object[]>
@@ -174,6 +121,7 @@ namespace ADN.Extensions.Tests
         {
             public IEnumerator<object[]> GetEnumerator()
             {
+                yield return new object[] { new double[] { }, 1, new double[] { } };
                 yield return new object[] { new double[] { 0 }, 1, new double[] { 1 } };
                 yield return new object[] { new double[] { 0, 0, 0, 0, 0 }, 1, new double[] { 1, 1, 1, 1, 1 } };
                 yield return new object[] { new double[] { 0, 0, 0, 0, 0 }, 1.2, new double[] { 1.2, 1.2, 1.2, 1.2, 1.2 } };

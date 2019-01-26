@@ -144,12 +144,6 @@ A reference to the changed array.
 | ---- | ----------- |
 | T | The type of the elements of the array that will be modified. |
 
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Array is null or empty. |
-
 ##### Example
 
 ```csharp
@@ -188,7 +182,6 @@ Subarrays.
 
 | Name | Description |
 | ---- | ----------- |
-| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Array is null or empty. |
 | [System.DivideByZeroException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DivideByZeroException 'System.DivideByZeroException') | Number of divisions is zero. |
 
 ##### Example
@@ -230,7 +223,6 @@ Subarrays.
 
 | Name | Description |
 | ---- | ----------- |
-| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | Array is null or empty. |
 | [System.DivideByZeroException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DivideByZeroException 'System.DivideByZeroException') | Number of elements in division is zero. |
 
 ##### Example
@@ -268,13 +260,6 @@ T[].
 | Name | Description |
 | ---- | ----------- |
 | T | The type of the elements of the array that will be modified. |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | array is null or empty. |
-| [System.ArgumentOutOfRangeException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentOutOfRangeException 'System.ArgumentOutOfRangeException') | index or length is out of range. |
 
 ##### Example
 
@@ -381,12 +366,6 @@ Hexadecimal string.
 | ---- | ---- | ----------- |
 | bytes | [System.Byte[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Byte[] 'System.Byte[]') | The value. |
 | separator | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Hexadecimal values separator. |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | bytes is null |
 
 ##### Example
 
@@ -627,12 +606,6 @@ The number nearest to value that is multiple of the given step.
 | value | [System.Double](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Double 'System.Double') | A double-precision floating-point number to be rounded. |
 | step | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Step number to round. |
 
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.DivideByZeroException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DivideByZeroException 'System.DivideByZeroException') | step is zero. |
-
 ##### Example
 
 ```csharp
@@ -663,12 +636,6 @@ The number nearest to value that is multiple of the given step and within the de
 | step | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Step number to round. |
 | min | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Minimum value. |
 | max | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Maximum value. |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.DivideByZeroException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DivideByZeroException 'System.DivideByZeroException') | step is zero. |
 
 ##### Example
 
@@ -717,12 +684,6 @@ Index of the maximum value of the list.
 | ---- | ----------- |
 | T | The type of the elements of the list. |
 
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | List is null or empty. |
-
 ##### Example
 
 ```csharp
@@ -755,12 +716,6 @@ Index of the minimum value of the list.
 | Name | Description |
 | ---- | ----------- |
 | T | The type of the elements of the list. |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | List is null or empty. |
 
 ##### Example
 
@@ -824,12 +779,6 @@ Index of the middle element.
 | ---- | ---- | ----------- |
 | values | [System.Collections.Generic.IEnumerable{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{System.Double}') | The list of elements. |
 
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | List is null or empty. |
-
 ##### Example
 
 ```csharp
@@ -858,12 +807,6 @@ Shuffle the elements of the list.
 | Name | Description |
 | ---- | ----------- |
 | T | The type of the elements of the list. |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.ArgumentNullException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentNullException 'System.ArgumentNullException') | List is null or empty. |
 
 ##### Example
 

@@ -88,7 +88,6 @@ namespace ADN.Extensions
         /// <param name="array">The one-dimensional, zero-based array.</param>
         /// <param name="value">The value.</param>
         /// <returns>A reference to the changed array.</returns>
-        /// <exception cref="ArgumentNullException">Array is null or empty.</exception>
         /// <example>
         /// <code lang="csharp">
         /// var array = new double[] { 0, 0, 0, 0, 0 };
@@ -101,12 +100,6 @@ namespace ADN.Extensions
         /// </example>
         public static T[] SetAllValues<T>(this T[] array, T value)
         {
-            // Check arguments
-            if (array is null || array.Length <= 0)
-            {
-                throw (new ArgumentNullException("array"));
-            }
-
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = value;
@@ -122,7 +115,6 @@ namespace ADN.Extensions
         /// <param name="array">Array to split.</param>
         /// <param name="numberOfDivisions">Number of divisions.</param>
         /// <returns>Subarrays.</returns>
-        /// <exception cref="ArgumentNullException">Array is null or empty.</exception>
         /// <exception cref="DivideByZeroException">Number of divisions is zero.</exception>
         /// <example>
         /// <code lang="csharp">
@@ -137,13 +129,7 @@ namespace ADN.Extensions
         /// </example>
         public static IEnumerable<T[]> SplitByNumberOfDivisions<T>(this T[] array, int numberOfDivisions)
         {
-            // Check arguments
-            if (array is null)
-            {
-                throw (new ArgumentNullException("array"));
-            }
-
-            if (numberOfDivisions <= 0)
+            if (numberOfDivisions < 1)
             {
                 throw (new DivideByZeroException("numberDivisions"));
             }
@@ -170,7 +156,6 @@ namespace ADN.Extensions
         /// <param name="array">Array to split.</param>
         /// <param name="elementsInDivision">Elements in each division.</param>
         /// <returns>Subarrays.</returns>
-        /// <exception cref="ArgumentNullException">Array is null or empty.</exception>
         /// <exception cref="DivideByZeroException">Number of elements in division is zero.</exception>
         /// <example>
         /// <code lang="csharp">
@@ -185,13 +170,7 @@ namespace ADN.Extensions
         /// </example>
         public static IEnumerable<T[]> SplitByNumberOfElementsInDivision<T>(this T[] array, int elementsInDivision)
         {
-            // Check arguments
-            if (array is null)
-            {
-                throw (new ArgumentNullException("array"));
-            }
-
-            if (elementsInDivision <= 0)
+            if (elementsInDivision < 1)
             {
                 throw (new DivideByZeroException("elementsInDivision"));
             }
@@ -217,8 +196,6 @@ namespace ADN.Extensions
         /// <param name="index">The index.</param>
         /// <param name="length">The length.</param>
         /// <returns>T[].</returns>
-        /// <exception cref="ArgumentNullException">array is null or empty.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">index or length is out of range.</exception>
         /// <example>
         /// <code lang="csharp">
         /// var array = new double[] { 0, 1, 2, 3, 4, 5 };
@@ -233,27 +210,6 @@ namespace ADN.Extensions
         /// </example>
         public static T[] SubArray<T>(this T[] array, int index, int length)
         {
-            // Check arguments
-            if (array is null || array.Length <= 0)
-            {
-                throw (new ArgumentNullException("array"));
-            }
-
-            if (index < 0 || index > array.Length)
-            {
-                throw (new ArgumentOutOfRangeException("index"));
-            }
-
-            if (length < 0)
-            {
-                throw (new ArgumentOutOfRangeException("length"));
-            }
-
-            if (index + length > array.Length)
-            {
-                throw (new ArgumentOutOfRangeException("length"));
-            }
-
             T[] result = new T[length];
             Array.Copy(array, index, result, 0, length);
             return result;

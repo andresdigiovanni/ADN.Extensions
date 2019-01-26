@@ -13,7 +13,6 @@ namespace ADN.Extensions
         /// <param name="value">A double-precision floating-point number to be rounded.</param>
         /// <param name="step">Step number to round.</param>
         /// <returns>The number nearest to value that is multiple of the given step.</returns>
-        /// <exception cref="DivideByZeroException">step is zero.</exception>
         /// <example>
         /// <code lang="csharp">
         /// double value = 12;
@@ -27,11 +26,6 @@ namespace ADN.Extensions
         /// </example>
         public static int RoundNumber(this double value, int step)
         {
-            if (step == 0)
-            {
-                throw (new DivideByZeroException("step"));
-            }
-
             return Convert.ToInt32(Math.Round(value / step) * step);
         }
 
@@ -43,7 +37,6 @@ namespace ADN.Extensions
         /// <param name="min">Minimum value.</param>
         /// <param name="max">Maximum value.</param>
         /// <returns>The number nearest to value that is multiple of the given step and within the determined range.</returns>
-        /// <exception cref="DivideByZeroException">step is zero.</exception>
         /// <example>
         /// <code lang="csharp">
         /// double value = 12;

@@ -18,14 +18,6 @@ namespace ADN.Extensions.Tests
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void BytesToHexa_Exception_value_Null()
-        {
-            byte[] value = null;
-
-            Assert.Throws<ArgumentNullException>(() => ByteExtensions.BytesToHexa(value, ""));
-        }
-
         [Theory]
         [ClassData(typeof(HexaToBytesData))]
         public void HexaToBytes(string value, string separator, byte[] expected)
