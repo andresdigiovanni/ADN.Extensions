@@ -102,5 +102,58 @@ namespace ADN.Extensions
             Regex regex = new Regex(pattern);
             return regex.Replace(value, "");
         }
+
+        /// <summary>
+        /// Converts a hexadecimal string to unicode string.
+        /// </summary>
+        /// <param name="str">Hexadecimal string.</param>
+        /// <returns>Unicode string.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var value = "4C6F72656D20497073756D";
+        /// var result = value.FromHex();
+        /// 
+        /// /*
+        /// result is "Lorem Ipsum"
+        /// */
+        /// </code>
+        /// </example>
+        public static string FromHex(this string str)
+        {
+            var sb = new StringBuilder();
+
+            for (var i = 0; i < str.Length; i+=2)
+            {
+                sb.Append(Convert.ToChar(Convert.ToUInt32(str.Substring(i, 2), 16)));
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Converts a unicode string to hexadecimal string.
+        /// </summary>
+        /// <param name="str">Unicode string.</param>
+        /// <returns>Hexadecimal string.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var value = "Lorem Ipsum";
+        /// var result = value.ToHex();
+        /// 
+        /// /*
+        /// result is "4C6F72656D20497073756D"
+        /// */
+        /// </code>
+        /// </example>
+        public static string ToHex(this string str)
+        {
+            var sb = new StringBuilder();
+
+            foreach (char c in str)
+            {
+                sb.Append(string.Format("{0:X2}", Convert.ToInt32(c)));
+            }
+
+            return sb.ToString();
+        }
     }
 }

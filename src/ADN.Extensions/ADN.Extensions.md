@@ -33,9 +33,11 @@
   - [Median(values)](#M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-IEnumerable{System-Double}- 'ADN.Extensions.ListExtensions.Median(System.Collections.Generic.IEnumerable{System.Double})')
   - [Shuffle\`\`1(values)](#M-ADN-Extensions-ListExtensions-Shuffle``1-System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})')
 - [StringExtensions](#T-ADN-Extensions-StringExtensions 'ADN.Extensions.StringExtensions')
+  - [FromHex(str)](#M-ADN-Extensions-StringExtensions-FromHex-System-String- 'ADN.Extensions.StringExtensions.FromHex(System.String)')
   - [Left(str,length)](#M-ADN-Extensions-StringExtensions-Left-System-String,System-Int32- 'ADN.Extensions.StringExtensions.Left(System.String,System.Int32)')
   - [Mid(str,startIndex,length)](#M-ADN-Extensions-StringExtensions-Mid-System-String,System-Int32,System-Int32- 'ADN.Extensions.StringExtensions.Mid(System.String,System.Int32,System.Int32)')
   - [Right(str,length)](#M-ADN-Extensions-StringExtensions-Right-System-String,System-Int32- 'ADN.Extensions.StringExtensions.Right(System.String,System.Int32)')
+  - [ToHex(str)](#M-ADN-Extensions-StringExtensions-ToHex-System-String- 'ADN.Extensions.StringExtensions.ToHex(System.String)')
   - [TrimNonPrintableAscii(value)](#M-ADN-Extensions-StringExtensions-TrimNonPrintableAscii-System-String- 'ADN.Extensions.StringExtensions.TrimNonPrintableAscii(System.String)')
 - [TableCssClasses](#T-ADN-Extensions-DataTableExtensions-TableCssClasses 'ADN.Extensions.DataTableExtensions.TableCssClasses')
 
@@ -826,6 +828,33 @@ ADN.Extensions
 
 A static class of extension methods for [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String').
 
+<a name='M-ADN-Extensions-StringExtensions-FromHex-System-String-'></a>
+### FromHex(str) `method`
+
+##### Summary
+
+Converts a hexadecimal string to unicode string.
+
+##### Returns
+
+Unicode string.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Hexadecimal string. |
+
+##### Example
+
+```csharp
+var value = "4C6F72656D20497073756D";
+var result = value.FromHex();
+/*
+result is "Lorem Ipsum"
+*/ 
+```
+
 <a name='M-ADN-Extensions-StringExtensions-Left-System-String,System-Int32-'></a>
 ### Left(str,length) `method`
 
@@ -912,6 +941,33 @@ var length = 5;
 var result = value.Right(length);
 /*
 result is "fghij"
+*/ 
+```
+
+<a name='M-ADN-Extensions-StringExtensions-ToHex-System-String-'></a>
+### ToHex(str) `method`
+
+##### Summary
+
+Converts a unicode string to hexadecimal string.
+
+##### Returns
+
+Hexadecimal string.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Unicode string. |
+
+##### Example
+
+```csharp
+var value = "Lorem Ipsum";
+var result = value.ToHex();
+/*
+result is "4C6F72656D20497073756D"
 */ 
 ```
 

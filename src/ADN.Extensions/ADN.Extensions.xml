@@ -546,5 +546,39 @@
             </code>
             </example>
         </member>
+        <member name="M:ADN.Extensions.StringExtensions.FromHex(System.String)">
+            <summary>
+            Converts a hexadecimal string to unicode string.
+            </summary>
+            <param name="str">Hexadecimal string.</param>
+            <returns>Unicode string.</returns>
+            <example>
+            <code lang="csharp">
+            var value = "4C6F72656D20497073756D";
+            var result = value.FromHex();
+            
+            /*
+            result is "Lorem Ipsum"
+            */
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.StringExtensions.ToHex(System.String)">
+            <summary>
+            Converts a unicode string to hexadecimal string.
+            </summary>
+            <param name="str">Unicode string.</param>
+            <returns>Hexadecimal string.</returns>
+            <example>
+            <code lang="csharp">
+            var value = "Lorem Ipsum";
+            var result = value.ToHex();
+            
+            /*
+            result is "4C6F72656D20497073756D"
+            */
+            </code>
+            </example>
+        </member>
     </members>
 </doc>

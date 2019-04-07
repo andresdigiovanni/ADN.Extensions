@@ -52,6 +52,24 @@ namespace ADN.Extensions.Tests
             Assert.Equal(expected, result);
         }
 
+        [Theory]
+        [InlineData("48656C6C6F20776F726C64", "Hello world")]
+        [InlineData("4C6F72656D20497073756D", "Lorem Ipsum")]
+        public void FromHex(string value, string expected)
+        {
+            var result = value.FromHex();
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("Hello world", "48656C6C6F20776F726C64")]
+        [InlineData("Lorem Ipsum", "4C6F72656D20497073756D")]
+        public void ToHex(string value, string expected)
+        {
+            var result = value.ToHex();
+            Assert.Equal(expected, result);
+        }
+
         public class TrimNonPrintableAsciiData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
