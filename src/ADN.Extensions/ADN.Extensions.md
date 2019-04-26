@@ -6,6 +6,7 @@
 - [ArrayExtensions](#T-ADN-Extensions-ArrayExtensions 'ADN.Extensions.ArrayExtensions')
   - [ArrayEqual\`\`1(first,second)](#M-ADN-Extensions-ArrayExtensions-ArrayEqual``1-``0[],``0[]- 'ADN.Extensions.ArrayExtensions.ArrayEqual``1(``0[],``0[])')
   - [Combine\`\`1(first,second)](#M-ADN-Extensions-ArrayExtensions-Combine``1-``0[],``0[]- 'ADN.Extensions.ArrayExtensions.Combine``1(``0[],``0[])')
+  - [InsertIntoArray\`\`1(array,index,item)](#M-ADN-Extensions-ArrayExtensions-InsertIntoArray``1-``0[],System-Int32,``0- 'ADN.Extensions.ArrayExtensions.InsertIntoArray``1(``0[],System.Int32,``0)')
   - [SetAllValues\`\`1(array,value)](#M-ADN-Extensions-ArrayExtensions-SetAllValues``1-``0[],``0- 'ADN.Extensions.ArrayExtensions.SetAllValues``1(``0[],``0)')
   - [SplitByNumberOfDivisions\`\`1(array,numberOfDivisions)](#M-ADN-Extensions-ArrayExtensions-SplitByNumberOfDivisions``1-``0[],System-Int32- 'ADN.Extensions.ArrayExtensions.SplitByNumberOfDivisions``1(``0[],System.Int32)')
   - [SplitByNumberOfElementsInDivision\`\`1(array,elementsInDivision)](#M-ADN-Extensions-ArrayExtensions-SplitByNumberOfElementsInDivision``1-``0[],System-Int32- 'ADN.Extensions.ArrayExtensions.SplitByNumberOfElementsInDivision``1(``0[],System.Int32)')
@@ -119,6 +120,41 @@ var second = new double[] { 3, 4, 5 };
 var result = first.Combine(second);
 /*
 result contains the values { 0, 1, 2, 3, 4, 5 }
+*/ 
+```
+
+<a name='M-ADN-Extensions-ArrayExtensions-InsertIntoArray``1-``0[],System-Int32,``0-'></a>
+### InsertIntoArray\`\`1(array,index,item) `method`
+
+##### Summary
+
+Inserts an element into the [Array](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Array 'System.Array')at the specified index.
+
+##### Returns
+
+A reference to the changed array.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| array | [\`\`0[]](#T-``0[] '``0[]') | The one-dimensional, zero-based array. |
+| index | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | The zero-based index at which item should be inserted. |
+| item | [\`\`0](#T-``0 '``0') | The object to insert. The value can be null for reference types. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Array type. |
+
+##### Example
+
+```csharp
+var array = new double[] { 1, 2, 3, 4, 5 };
+var result = array.InsertIntoArray(2, 0);
+/*
+result contains the values { 1, 2, 0, 3, 4, 5 }
 */ 
 ```
 

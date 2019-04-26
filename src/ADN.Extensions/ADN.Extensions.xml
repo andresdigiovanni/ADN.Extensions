@@ -49,6 +49,26 @@
             </code>
             </example>
         </member>
+        <member name="M:ADN.Extensions.ArrayExtensions.InsertIntoArray``1(``0[],System.Int32,``0)">
+            <summary>
+            Inserts an element into the <see cref="T:System.Array"/> at the specified index.
+            </summary>
+            <typeparam name="T">Array type.</typeparam>
+            <param name="array">The one-dimensional, zero-based array.</param>
+            <param name="index">The zero-based index at which item should be inserted.</param>
+            <param name="item">The object to insert. The value can be null for reference types.</param>
+            <returns>A reference to the changed array.</returns>
+            <example>
+            <code lang="csharp">
+            var array = new double[] { 1, 2, 3, 4, 5 };
+            var result = array.InsertIntoArray(2, 0);
+            
+            /*
+            result contains the values { 1, 2, 0, 3, 4, 5 }
+            */
+            </code>
+            </example>
+        </member>
         <member name="M:ADN.Extensions.ArrayExtensions.SetAllValues``1(``0[],``0)">
             <summary>
             Sets all values.

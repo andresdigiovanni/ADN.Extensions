@@ -28,6 +28,15 @@ namespace ADN.Extensions.Tests
         }
 
         [Theory]
+        [ClassData(typeof(InsertIntoArrayData))]
+        public void InsertIntoArray(double[] value, int index, double item, double[] expected)
+        {
+            var result = value.InsertIntoArray(index, item);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
         [ClassData(typeof(SetAllValuesData))]
         public void SetAllValues(double[] value, double setter, double[] expected)
         {
@@ -112,6 +121,16 @@ namespace ADN.Extensions.Tests
                 yield return new object[] { new double[] { 0, 1, 2 }, new double[] { 3, 4, 5 }, new double[] { 0, 1, 2, 3, 4, 5 } };
                 yield return new object[] { new double[] { 0 }, new double[] { }, new double[] { 0 } };
                 yield return new object[] { new double[] { }, new double[] { 0 }, new double[] { 0 } };
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
+        public class InsertIntoArrayData : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                yield return new object[] { new double[] { 1, 2, 3, 4, 5 }, 2, 0, new double[] { 1, 2, 0, 3, 4, 5 } };
             }
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

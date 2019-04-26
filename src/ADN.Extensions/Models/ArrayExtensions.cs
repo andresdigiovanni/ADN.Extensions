@@ -82,6 +82,43 @@ namespace ADN.Extensions
         }
 
         /// <summary>
+        /// Inserts an element into the <see cref="Array"/> at the specified index.
+        /// </summary>
+        /// <typeparam name="T">Array type.</typeparam>
+        /// <param name="array">The one-dimensional, zero-based array.</param>
+        /// <param name="index">The zero-based index at which item should be inserted.</param>
+        /// <param name="item">The object to insert. The value can be null for reference types.</param>
+        /// <returns>A reference to the changed array.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var array = new double[] { 1, 2, 3, 4, 5 };
+        /// var result = array.InsertIntoArray(2, 0);
+        /// 
+        /// /*
+        /// result contains the values { 1, 2, 0, 3, 4, 5 }
+        /// */
+        /// </code>
+        /// </example>
+        public static T[] InsertIntoArray<T>(this T[] array, int index, T item)
+        {
+            var result = new T[array.Length + 1];
+
+            for (int i = 0; i < index; i++)
+            {
+                result[i] = array[i];
+            }
+
+            result[index] = item;
+
+            for (int i = index + 1; i < result.Length; i++)
+            {
+                result[i] = array[i - 1];
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Sets all values.
         /// </summary>
         /// <typeparam name="T">The type of the elements of the array that will be modified.</typeparam>
