@@ -159,7 +159,7 @@ namespace ADN.Extensions
         /// <returns>Mean of the values.</returns>
         /// <example>
         /// <code lang="csharp">
-        /// var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
         /// var result = values.Mean();
         /// 
         /// /*
@@ -184,7 +184,7 @@ namespace ADN.Extensions
         /// <code lang="csharp">
         /// int start = 0;
         /// int end = 5;
-        /// var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
         /// var result = values.Mean(start, end);
         /// 
         /// /*
@@ -216,7 +216,7 @@ namespace ADN.Extensions
         /// <returns>Variance of values.</returns>
         /// <example>
         /// <code lang="csharp">
-        /// var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
         /// var result = values.Variance();
         /// </code>
         /// </example>
@@ -234,7 +234,7 @@ namespace ADN.Extensions
         /// <example>
         /// <code lang="csharp">
         /// double mean = 2.5;
-        /// var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
         /// var result = values.Variance(mean);
         /// </code>
         /// </example>
@@ -256,7 +256,7 @@ namespace ADN.Extensions
         /// int start = 0;
         /// int end = 5;
         /// double mean = 2.5;
-        /// var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
         /// var result = values.Variance(mean, start, end);
         /// </code>
         /// </example>
@@ -282,7 +282,7 @@ namespace ADN.Extensions
         /// <returns>Standard deviation.</returns>
         /// <example>
         /// <code lang="csharp">
-        /// var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
         /// var result = values.StandardDeviation();
         /// </code>
         /// </example>
@@ -302,7 +302,7 @@ namespace ADN.Extensions
         /// <code lang="csharp">
         /// int start = 0;
         /// int end = 5;
-        /// var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
         /// var result = values.StandardDeviation(start, end);
         /// </code>
         /// </example>

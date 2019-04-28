@@ -478,13 +478,122 @@
             </code>
             </example>
         </member>
-        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double})" -->
-        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)" -->
-        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double})" -->
-        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double)" -->
-        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double,System.Int32,System.Int32)" -->
-        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double})" -->
-        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)" -->
+        <member name="M:ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Gets the mean of the values of the list.
+            </summary>
+            <param name="values">The list of elements.</param>
+            <returns>Mean of the values.</returns>
+            <example>
+            <code lang="csharp">
+            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+            var result = values.Mean();
+            
+            /*
+            result is 4.5
+            */
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)">
+            <summary>
+            Gets the mean of the values of the list of a given range.
+            </summary>
+            <param name="values">The list of elements.</param>
+            <param name="start">Start index.</param>
+            <param name="end">End index.</param>
+            <returns>Mean of the values.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Start or end out of range.</exception>
+            <example>
+            <code lang="csharp">
+            int start = 0;
+            int end = 5;
+            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+            var result = values.Mean(start, end);
+            
+            /*
+            result is 2.5
+            */
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Calculate the variance of the values of the list.
+            </summary>
+            <param name="values">The list of elements.</param>
+            <returns>Variance of values.</returns>
+            <example>
+            <code lang="csharp">
+            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+            var result = values.Variance();
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double)">
+            <summary>
+            Calculate the variance of the values of the list.
+            </summary>
+            <param name="values">The list of elements.</param>
+            <param name="mean">The mean of the values of the list.</param>
+            <returns>Variance of values.</returns>
+            <example>
+            <code lang="csharp">
+            double mean = 2.5;
+            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+            var result = values.Variance(mean);
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double,System.Int32,System.Int32)">
+            <summary>
+            Calculate the variance of the values of the list of a given range.
+            </summary>
+            <param name="values">The list of elements.</param>
+            <param name="mean">The mean of the values of the list.</param>
+            <param name="start">Start index.</param>
+            <param name="end">End index.</param>
+            <returns>Variance of values.</returns>
+            <example>
+            <code lang="csharp">
+            int start = 0;
+            int end = 5;
+            double mean = 2.5;
+            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+            var result = values.Variance(mean, start, end);
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Calculate the standard deviation of the values of the list.
+            </summary>
+            <param name="values">The list of elements.</param>
+            <returns>Standard deviation.</returns>
+            <example>
+            <code lang="csharp">
+            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+            var result = values.StandardDeviation();
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)">
+            <summary>
+            Calculate the standard deviation of the values of the list of a given range.
+            </summary>
+            <param name="values">The list of elements.</param>
+            <param name="start">Start index.</param>
+            <param name="end">End index.</param>
+            <returns>Standard deviation.</returns>
+            <example>
+            <code lang="csharp">
+            int start = 0;
+            int end = 5;
+            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+            var result = values.StandardDeviation(start, end);
+            </code>
+            </example>
+        </member>
         <member name="T:ADN.Extensions.StringExtensions">
             <summary>
             A static class of extension methods for <see cref="T:System.String"/>.

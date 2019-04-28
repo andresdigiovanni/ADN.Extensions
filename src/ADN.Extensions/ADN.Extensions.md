@@ -31,8 +31,15 @@
   - [IndexOfMax\`\`1(values)](#M-ADN-Extensions-ListExtensions-IndexOfMax``1-System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.IndexOfMax``1(System.Collections.Generic.IList{``0})')
   - [IndexOfMin\`\`1(values)](#M-ADN-Extensions-ListExtensions-IndexOfMin``1-System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.IndexOfMin``1(System.Collections.Generic.IList{``0})')
   - [IsSame\`\`1(first,second)](#M-ADN-Extensions-ListExtensions-IsSame``1-System-Collections-Generic-IList{``0},System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.IsSame``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})')
+  - [Mean(values)](#M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double})')
+  - [Mean(values,start,end)](#M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double},System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)')
   - [Median(values)](#M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-IEnumerable{System-Double}- 'ADN.Extensions.ListExtensions.Median(System.Collections.Generic.IEnumerable{System.Double})')
   - [Shuffle\`\`1(values)](#M-ADN-Extensions-ListExtensions-Shuffle``1-System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})')
+  - [StandardDeviation(values)](#M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double})')
+  - [StandardDeviation(values,start,end)](#M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double},System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)')
+  - [Variance(values)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double})')
+  - [Variance(values,mean)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double)')
+  - [Variance(values,mean,start,end)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double,System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double,System.Int32,System.Int32)')
 - [StringExtensions](#T-ADN-Extensions-StringExtensions 'ADN.Extensions.StringExtensions')
   - [FromHex(str)](#M-ADN-Extensions-StringExtensions-FromHex-System-String- 'ADN.Extensions.StringExtensions.FromHex(System.String)')
   - [Left(str,length)](#M-ADN-Extensions-StringExtensions-Left-System-String,System-Int32- 'ADN.Extensions.StringExtensions.Left(System.String,System.Int32)')
@@ -800,6 +807,61 @@ result is true
 */ 
 ```
 
+<a name='M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double}-'></a>
+### Mean(values) `method`
+
+##### Summary
+
+Gets the mean of the values of the list.
+
+##### Returns
+
+Mean of the values.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
+
+##### Example
+
+```csharp
+<![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]> 
+```
+
+<a name='M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double},System-Int32,System-Int32-'></a>
+### Mean(values,start,end) `method`
+
+##### Summary
+
+Gets the mean of the values of the list of a given range.
+
+##### Returns
+
+Mean of the values.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
+| start | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Start index. |
+| end | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | End index. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentOutOfRangeException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentOutOfRangeException 'System.ArgumentOutOfRangeException') | Start or end out of range. |
+
+##### Example
+
+```csharp
+int start = 0;
+int end = 5; 
+```
+
 <a name='M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-IEnumerable{System-Double}-'></a>
 ### Median(values) `method`
 
@@ -851,6 +913,130 @@ Shuffle the elements of the list.
 ```csharp
 var values = new double[] { 0, 1, 2, 3, 4, 5 };
 values.Shuffle(); 
+```
+
+<a name='M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double}-'></a>
+### StandardDeviation(values) `method`
+
+##### Summary
+
+Calculate the standard deviation of the values of the list.
+
+##### Returns
+
+Standard deviation.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
+
+##### Example
+
+```csharp
+<![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]> 
+```
+
+<a name='M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double},System-Int32,System-Int32-'></a>
+### StandardDeviation(values,start,end) `method`
+
+##### Summary
+
+Calculate the standard deviation of the values of the list of a given range.
+
+##### Returns
+
+Standard deviation.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
+| start | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Start index. |
+| end | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | End index. |
+
+##### Example
+
+```csharp
+int start = 0;
+int end = 5; 
+```
+
+<a name='M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double}-'></a>
+### Variance(values) `method`
+
+##### Summary
+
+Calculate the variance of the values of the list.
+
+##### Returns
+
+Variance of values.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
+
+##### Example
+
+```csharp
+<![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]> 
+```
+
+<a name='M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double-'></a>
+### Variance(values,mean) `method`
+
+##### Summary
+
+Calculate the variance of the values of the list.
+
+##### Returns
+
+Variance of values.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
+| mean | [System.Double](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Double 'System.Double') | The mean of the values of the list. |
+
+##### Example
+
+```csharp
+double mean = 2.5; 
+```
+
+<a name='M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double,System-Int32,System-Int32-'></a>
+### Variance(values,mean,start,end) `method`
+
+##### Summary
+
+Calculate the variance of the values of the list of a given range.
+
+##### Returns
+
+Variance of values.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
+| mean | [System.Double](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Double 'System.Double') | The mean of the values of the list. |
+| start | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Start index. |
+| end | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | End index. |
+
+##### Example
+
+```csharp
+int start = 0;
+int end = 5;
+double mean = 2.5; 
 ```
 
 <a name='T-ADN-Extensions-StringExtensions'></a>
