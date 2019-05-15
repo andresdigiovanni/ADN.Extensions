@@ -28,18 +28,18 @@ namespace ADN.Extensions
         /// </example>
         public static string BytesToHexa(this byte[] bytes, string separator = "")
         {
-            string sHexa = "";
+            var sb = new StringBuilder();
 
             for (var i = 0; i < bytes.Length; i++)
             {
-                if (!string.IsNullOrEmpty(sHexa))
+                if (i != 0)
                 {
-                    sHexa += separator;
+                    sb.Append(separator);
                 }
-                sHexa += bytes[i].ToString("X").PadLeft(2, '0');
+                sb.Append(bytes[i].ToString("X").PadLeft(2, '0'));
             }
 
-            return sHexa;
+            return sb.ToString();
         }
 
         /// <summary>
