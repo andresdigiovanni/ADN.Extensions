@@ -310,11 +310,11 @@
             <summary>
             Converts DateTime to unix time stamp.
             </summary>
-            <param name="date">The DateTime.</param>
+            <param name="dateTime">The DateTime.</param>
             <returns>The unix time stamp.</returns>
             <example>
             <code lang="csharp">
-            DateTime date = DateTime.Parse("02/16/2008 12:15:12", new CultureInfo("en-US"));
+            var dateTime = DateTime.Parse("02/16/2008 12:15:12", new CultureInfo("en-US"));
             var result = date.DateTimeToUnixTimeStamp();
             
             /*
@@ -337,6 +337,42 @@
             /*
             result is 02/16/2008 12:15:12
             */
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.DateTimeExtensions.TrimTicks(System.DateTime)">
+            <summary>
+            Returns the DateTime with the ticks trimmed.
+            </summary>
+            <param name="dateTime">The DateTime.</param>
+            <returns>A DateTime with the ticks trimmed.</returns>
+            <example>
+            <code lang="csharp">
+            var dateTime = DateTime.Now.TrimTicks();
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.DateTimeExtensions.TrimMilliseconds(System.DateTime)">
+            <summary>
+            Returns the DateTime with the milliseconds trimmed.
+            </summary>
+            <param name="dateTime">The DateTime.</param>
+            <returns>A DateTime with the milliseconds trimmed.</returns>
+            <example>
+            <code lang="csharp">
+            var dateTime = DateTime.Now.TrimMilliseconds();
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.DateTimeExtensions.TrimSecondsAndMilliseconds(System.DateTime)">
+            <summary>
+            Returns a Datetime with the seconds trimmed.
+            </summary>
+            <param name="dateTime">The DateTime.</param>
+            <returns>A DateTime with the seconds trimmed.</returns>
+            <example>
+            <code lang="csharp">
+            var dateTime = DateTime.Now.TrimSecondsAndMilliseconds();
             </code>
             </example>
         </member>
@@ -599,6 +635,40 @@
             A static class of extension methods for <see cref="T:System.String"/>.
             </summary>
         </member>
+        <member name="M:ADN.Extensions.StringExtensions.IsAlphaNumeric(System.String)">
+            <summary>
+            Check if a string is alphanumeric.
+            </summary>
+            <param name="str">String to check.</param>
+            <returns>True if the string is alphanumeric, false otherwise.</returns>
+            <example>
+            <code lang="csharp">
+            var value = "abc1234";
+            var result = value.IsAlphaNumeric();
+            
+            /*
+            result is true
+            */
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.StringExtensions.IsValidEmailAddress(System.String)">
+            <summary>
+            Check if a string is a valid email.
+            </summary>
+            <param name="str">String to check.</param>
+            <returns>True if the string is a valid email, false otherwise.</returns>
+            <example>
+            <code lang="csharp">
+            var value = "austin.powers@example.com";
+            var result = value.IsValidEmailAddress();
+            
+            /*
+            result is true
+            */
+            </code>
+            </example>
+        </member>
         <member name="M:ADN.Extensions.StringExtensions.Left(System.String,System.Int32)">
             <summary>
             Returns a string containing a specified number of characters from the left side of a string.
@@ -662,12 +732,12 @@
             <summary>
             Returns a string without the non-printable ASCII characters from a string (characters between space and tilde).
             </summary>
-            <param name="value">String to remove the non-printable ASCII characters.</param>
+            <param name="str">String to remove the non-printable ASCII characters.</param>
             <returns>A string without the non-printable ASCII characters from a string (characters between space and tilde).</returns>
             <example>
             <code lang="csharp">
-            var value = (char)0x12 + " a~";
-            var result = value.TrimNonPrintableAscii();
+            var str = (char)0x12 + " a~";
+            var result = str.TrimNonPrintableAscii();
             
             /*
             result is " a~"

@@ -22,7 +22,10 @@
 - [DataTableExtensions](#T-ADN-Extensions-DataTableExtensions 'ADN.Extensions.DataTableExtensions')
   - [ToHtmlTable(dataTable,tableCssClasses)](#M-ADN-Extensions-DataTableExtensions-ToHtmlTable-System-Data-DataTable,ADN-Extensions-DataTableExtensions-TableCssClasses- 'ADN.Extensions.DataTableExtensions.ToHtmlTable(System.Data.DataTable,ADN.Extensions.DataTableExtensions.TableCssClasses)')
 - [DateTimeExtensions](#T-ADN-Extensions-DateTimeExtensions 'ADN.Extensions.DateTimeExtensions')
-  - [DateTimeToUnixTimeStamp(date)](#M-ADN-Extensions-DateTimeExtensions-DateTimeToUnixTimeStamp-System-DateTime- 'ADN.Extensions.DateTimeExtensions.DateTimeToUnixTimeStamp(System.DateTime)')
+  - [DateTimeToUnixTimeStamp(dateTime)](#M-ADN-Extensions-DateTimeExtensions-DateTimeToUnixTimeStamp-System-DateTime- 'ADN.Extensions.DateTimeExtensions.DateTimeToUnixTimeStamp(System.DateTime)')
+  - [TrimMilliseconds(dateTime)](#M-ADN-Extensions-DateTimeExtensions-TrimMilliseconds-System-DateTime- 'ADN.Extensions.DateTimeExtensions.TrimMilliseconds(System.DateTime)')
+  - [TrimSecondsAndMilliseconds(dateTime)](#M-ADN-Extensions-DateTimeExtensions-TrimSecondsAndMilliseconds-System-DateTime- 'ADN.Extensions.DateTimeExtensions.TrimSecondsAndMilliseconds(System.DateTime)')
+  - [TrimTicks(dateTime)](#M-ADN-Extensions-DateTimeExtensions-TrimTicks-System-DateTime- 'ADN.Extensions.DateTimeExtensions.TrimTicks(System.DateTime)')
   - [UnixTimeStampToDateTime(unixTimestamp)](#M-ADN-Extensions-DateTimeExtensions-UnixTimeStampToDateTime-System-Int64- 'ADN.Extensions.DateTimeExtensions.UnixTimeStampToDateTime(System.Int64)')
 - [IntegerExtensions](#T-ADN-Extensions-IntegerExtensions 'ADN.Extensions.IntegerExtensions')
   - [RoundNumber(value,step)](#M-ADN-Extensions-IntegerExtensions-RoundNumber-System-Double,System-Int32- 'ADN.Extensions.IntegerExtensions.RoundNumber(System.Double,System.Int32)')
@@ -42,11 +45,13 @@
   - [Variance(values,mean,start,end)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double,System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double,System.Int32,System.Int32)')
 - [StringExtensions](#T-ADN-Extensions-StringExtensions 'ADN.Extensions.StringExtensions')
   - [FromHex(str)](#M-ADN-Extensions-StringExtensions-FromHex-System-String- 'ADN.Extensions.StringExtensions.FromHex(System.String)')
+  - [IsAlphaNumeric(str)](#M-ADN-Extensions-StringExtensions-IsAlphaNumeric-System-String- 'ADN.Extensions.StringExtensions.IsAlphaNumeric(System.String)')
+  - [IsValidEmailAddress(str)](#M-ADN-Extensions-StringExtensions-IsValidEmailAddress-System-String- 'ADN.Extensions.StringExtensions.IsValidEmailAddress(System.String)')
   - [Left(str,length)](#M-ADN-Extensions-StringExtensions-Left-System-String,System-Int32- 'ADN.Extensions.StringExtensions.Left(System.String,System.Int32)')
   - [Mid(str,startIndex,length)](#M-ADN-Extensions-StringExtensions-Mid-System-String,System-Int32,System-Int32- 'ADN.Extensions.StringExtensions.Mid(System.String,System.Int32,System.Int32)')
   - [Right(str,length)](#M-ADN-Extensions-StringExtensions-Right-System-String,System-Int32- 'ADN.Extensions.StringExtensions.Right(System.String,System.Int32)')
   - [ToHex(str)](#M-ADN-Extensions-StringExtensions-ToHex-System-String- 'ADN.Extensions.StringExtensions.ToHex(System.String)')
-  - [TrimNonPrintableAscii(value)](#M-ADN-Extensions-StringExtensions-TrimNonPrintableAscii-System-String- 'ADN.Extensions.StringExtensions.TrimNonPrintableAscii(System.String)')
+  - [TrimNonPrintableAscii(str)](#M-ADN-Extensions-StringExtensions-TrimNonPrintableAscii-System-String- 'ADN.Extensions.StringExtensions.TrimNonPrintableAscii(System.String)')
 - [TableCssClasses](#T-ADN-Extensions-DataTableExtensions-TableCssClasses 'ADN.Extensions.DataTableExtensions.TableCssClasses')
 
 <a name='T-ADN-Extensions-ArrayExtensions'></a>
@@ -569,7 +574,7 @@ ADN.Extensions
 A static class of extension methods for [DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime').
 
 <a name='M-ADN-Extensions-DateTimeExtensions-DateTimeToUnixTimeStamp-System-DateTime-'></a>
-### DateTimeToUnixTimeStamp(date) `method`
+### DateTimeToUnixTimeStamp(dateTime) `method`
 
 ##### Summary
 
@@ -583,16 +588,85 @@ The unix time stamp.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| date | [System.DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime') | The DateTime. |
+| dateTime | [System.DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime') | The DateTime. |
 
 ##### Example
 
 ```csharp
-DateTime date = DateTime.Parse("02/16/2008 12:15:12", new CultureInfo("en-US"));
+var dateTime = DateTime.Parse("02/16/2008 12:15:12", new CultureInfo("en-US"));
 var result = date.DateTimeToUnixTimeStamp();
 /*
 result is 1203164112
 */ 
+```
+
+<a name='M-ADN-Extensions-DateTimeExtensions-TrimMilliseconds-System-DateTime-'></a>
+### TrimMilliseconds(dateTime) `method`
+
+##### Summary
+
+Returns the DateTime with the milliseconds trimmed.
+
+##### Returns
+
+A DateTime with the milliseconds trimmed.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| dateTime | [System.DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime') | The DateTime. |
+
+##### Example
+
+```csharp
+var dateTime = DateTime.Now.TrimMilliseconds(); 
+```
+
+<a name='M-ADN-Extensions-DateTimeExtensions-TrimSecondsAndMilliseconds-System-DateTime-'></a>
+### TrimSecondsAndMilliseconds(dateTime) `method`
+
+##### Summary
+
+Returns a Datetime with the seconds trimmed.
+
+##### Returns
+
+A DateTime with the seconds trimmed.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| dateTime | [System.DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime') | The DateTime. |
+
+##### Example
+
+```csharp
+var dateTime = DateTime.Now.TrimSecondsAndMilliseconds(); 
+```
+
+<a name='M-ADN-Extensions-DateTimeExtensions-TrimTicks-System-DateTime-'></a>
+### TrimTicks(dateTime) `method`
+
+##### Summary
+
+Returns the DateTime with the ticks trimmed.
+
+##### Returns
+
+A DateTime with the ticks trimmed.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| dateTime | [System.DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime') | The DateTime. |
+
+##### Example
+
+```csharp
+var dateTime = DateTime.Now.TrimTicks(); 
 ```
 
 <a name='M-ADN-Extensions-DateTimeExtensions-UnixTimeStampToDateTime-System-Int64-'></a>
@@ -1077,6 +1151,60 @@ result is "Lorem Ipsum"
 */ 
 ```
 
+<a name='M-ADN-Extensions-StringExtensions-IsAlphaNumeric-System-String-'></a>
+### IsAlphaNumeric(str) `method`
+
+##### Summary
+
+Check if a string is alphanumeric.
+
+##### Returns
+
+True if the string is alphanumeric, false otherwise.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String to check. |
+
+##### Example
+
+```csharp
+var value = "abc1234";
+var result = value.IsAlphaNumeric();
+/*
+result is true
+*/ 
+```
+
+<a name='M-ADN-Extensions-StringExtensions-IsValidEmailAddress-System-String-'></a>
+### IsValidEmailAddress(str) `method`
+
+##### Summary
+
+Check if a string is a valid email.
+
+##### Returns
+
+True if the string is a valid email, false otherwise.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String to check. |
+
+##### Example
+
+```csharp
+var value = "austin.powers@example.com";
+var result = value.IsValidEmailAddress();
+/*
+result is true
+*/ 
+```
+
 <a name='M-ADN-Extensions-StringExtensions-Left-System-String,System-Int32-'></a>
 ### Left(str,length) `method`
 
@@ -1194,7 +1322,7 @@ result is "4C6F72656D20497073756D"
 ```
 
 <a name='M-ADN-Extensions-StringExtensions-TrimNonPrintableAscii-System-String-'></a>
-### TrimNonPrintableAscii(value) `method`
+### TrimNonPrintableAscii(str) `method`
 
 ##### Summary
 
@@ -1208,13 +1336,13 @@ A string without the non-printable ASCII characters from a string (characters be
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| value | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String to remove the non-printable ASCII characters. |
+| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String to remove the non-printable ASCII characters. |
 
 ##### Example
 
 ```csharp
-var value = (char)0x12 + " a~";
-var result = value.TrimNonPrintableAscii();
+var str = (char)0x12 + " a~";
+var result = str.TrimNonPrintableAscii();
 /*
 result is " a~"
 */ 

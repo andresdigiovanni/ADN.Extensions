@@ -16,7 +16,7 @@ namespace ADN.Extensions.Tests
         [InlineData("16/02/2008 12:15:12", "es-ES", 1203164112)]
         public void DateTimeToUnixTimeStamp(string value, string culture, long expected)
         {
-            DateTime date = DateTime.Parse(value, new CultureInfo(culture));
+            var date = DateTime.Parse(value, new CultureInfo(culture));
             var result = date.DateTimeToUnixTimeStamp();
 
             Assert.Equal(expected, result);
@@ -28,6 +28,44 @@ namespace ADN.Extensions.Tests
         public void UnixTimeStampToDateTime(long value, string expected)
         {
             var result = value.UnixTimeStampToDateTime().ToString("MM/dd/yyyy HH:mm:ss");
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(2019, 5, 14, 15, 50, 23, 120, 38)]
+        public void TrimTicks(int year, int month, int day, int hour, int minute, int second, int millisecond, int ticks)
+        {
+            var expected = new DateTime(year, month, day, hour, minute, second, millisecond);
+            var date = expected.AddTicks(ticks);
+            var result = date.TrimTicks();
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(2019, 5, 14, 15, 50, 23, 120, 38)]
+        public void TrimMilliseconds(int year, int month, int day, int hour, int minute, int second, int millisecond, int ticks)
+        {
+            var expected = new DateTime(year, month, day, hour, minute, second);
+            var date = expected
+                .AddMilliseconds(millisecond)
+                .AddTicks(ticks);
+            var result = date.TrimMilliseconds();
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(2019, 5, 14, 15, 50, 23, 120, 38)]
+        public void TrimSecondsAndMilliseconds(int year, int month, int day, int hour, int minute, int second, int millisecond, int ticks)
+        {
+            var expected = new DateTime(year, month, day, hour, minute, 0);
+            var date = expected
+                .AddSeconds(second)
+                .AddMilliseconds(millisecond)
+                .AddTicks(ticks);
+            var result = date.TrimSecondsAndMilliseconds();
 
             Assert.Equal(expected, result);
         }

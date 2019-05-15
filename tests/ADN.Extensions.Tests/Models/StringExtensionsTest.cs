@@ -12,6 +12,50 @@ namespace ADN.Extensions.Tests
     public class StringExtensionsTest
     {
         [Theory]
+        [InlineData("abc", true)]
+        [InlineData("ABC", true)]
+        [InlineData("1234", true)]
+        [InlineData("abc1234", true)]
+        [InlineData(" abc", false)]
+        [InlineData(" 1234", false)]
+        [InlineData("-abc", false)]
+        [InlineData("_abc", false)]
+        public void IsAlphaNumeric(string value, bool expected)
+        {
+            var result = value.IsAlphaNumeric();
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(@"NotAnEmail", false)]
+        [InlineData(@"@NotAnEmail", false)]
+        [InlineData(@"""test\\blah""@example.com", true)]
+        [InlineData(@"""test\blah""@example.com", false)]
+        [InlineData("\"test\\\rblah\"@example.com", true)]
+        [InlineData("\"test\rblah\"@example.com", false)]
+        [InlineData(@"""test\""blah""@example.com", true)]
+        [InlineData(@"""test""blah""@example.com", false)]
+        [InlineData(@"customer/department@example.com", true)]
+        [InlineData(@"$A12345@example.com", true)]
+        [InlineData(@"!def!xyz%abc@example.com", true)]
+        [InlineData(@"_Yosemite.Sam@example.com", true)]
+        [InlineData(@"~@example.com", true)]
+        [InlineData(@".wooly@example.com", false)]
+        [InlineData(@"wo..oly@example.com", false)]
+        [InlineData(@"pootietang.@example.com", false)]
+        [InlineData(@".@example.com", false)]
+        [InlineData(@"""Austin@Powers""@example.com", true)]
+        [InlineData(@"Ima.Fool@example.com", true)]
+        [InlineData(@"""Ima.Fool""@example.com", true)]
+        [InlineData(@"""Ima Fool""@example.com", true)]
+        [InlineData(@"Ima Fool@example.com", false)]
+        public void IsValidEmailAddress(string value, bool expected)
+        {
+            var result = value.IsValidEmailAddress();
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
         [InlineData("abcdefghij", 0, "")]
         [InlineData("abcdefghij", 5, "abcde")]
         [InlineData("abcdefghij", 10, "abcdefghij")]

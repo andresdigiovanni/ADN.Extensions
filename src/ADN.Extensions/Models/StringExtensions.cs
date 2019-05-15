@@ -11,6 +11,51 @@ namespace ADN.Extensions
     public static class StringExtensions
     {
         /// <summary>
+        /// Check if a string is alphanumeric.
+        /// </summary>
+        /// <param name="str">String to check.</param>
+        /// <returns>True if the string is alphanumeric, false otherwise.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var value = "abc1234";
+        /// var result = value.IsAlphaNumeric();
+        /// 
+        /// /*
+        /// result is true
+        /// */
+        /// </code>
+        /// </example>
+        public static bool IsAlphaNumeric(this string str)
+        {
+            return !(new Regex("[^a-zA-Z0-9]")).IsMatch(str);
+        }
+
+        /// <summary>
+        /// Check if a string is a valid email.
+        /// </summary>
+        /// <param name="str">String to check.</param>
+        /// <returns>True if the string is a valid email, false otherwise.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var value = "austin.powers@example.com";
+        /// var result = value.IsValidEmailAddress();
+        /// 
+        /// /*
+        /// result is true
+        /// */
+        /// </code>
+        /// </example>
+        public static bool IsValidEmailAddress(this string str)
+        {
+            string pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" +
+                @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" +
+                @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+
+            var regex = new Regex(pattern, RegexOptions.IgnoreCase);
+            return regex.IsMatch(str);
+        }
+
+        /// <summary>
         /// Returns a string containing a specified number of characters from the left side of a string.
         /// </summary>
         /// <param name="str">String expression from which the leftmost characters are returned.</param>
@@ -84,23 +129,23 @@ namespace ADN.Extensions
         /// <summary>
         /// Returns a string without the non-printable ASCII characters from a string (characters between space and tilde).
         /// </summary>
-        /// <param name="value">String to remove the non-printable ASCII characters.</param>
+        /// <param name="str">String to remove the non-printable ASCII characters.</param>
         /// <returns>A string without the non-printable ASCII characters from a string (characters between space and tilde).</returns>
         /// <example>
         /// <code lang="csharp">
-        /// var value = (char)0x12 + " a~";
-        /// var result = value.TrimNonPrintableAscii();
+        /// var str = (char)0x12 + " a~";
+        /// var result = str.TrimNonPrintableAscii();
         /// 
         /// /*
         /// result is " a~"
         /// */
         /// </code>
         /// </example>
-        public static string TrimNonPrintableAscii(this string value)
+        public static string TrimNonPrintableAscii(this string str)
         {
             string pattern = "[^ -~]+";
             Regex regex = new Regex(pattern);
-            return regex.Replace(value, "");
+            return regex.Replace(str, "");
         }
 
         /// <summary>
