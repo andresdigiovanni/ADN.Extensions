@@ -27,6 +27,8 @@
   - [TrimSecondsAndMilliseconds(dateTime)](#M-ADN-Extensions-DateTimeExtensions-TrimSecondsAndMilliseconds-System-DateTime- 'ADN.Extensions.DateTimeExtensions.TrimSecondsAndMilliseconds(System.DateTime)')
   - [TrimTicks(dateTime)](#M-ADN-Extensions-DateTimeExtensions-TrimTicks-System-DateTime- 'ADN.Extensions.DateTimeExtensions.TrimTicks(System.DateTime)')
   - [UnixTimeStampToDateTime(unixTimestamp)](#M-ADN-Extensions-DateTimeExtensions-UnixTimeStampToDateTime-System-Int64- 'ADN.Extensions.DateTimeExtensions.UnixTimeStampToDateTime(System.Int64)')
+- [DictionaryExtensions](#T-ADN-Extensions-DictionaryExtensions 'ADN.Extensions.DictionaryExtensions')
+  - [RemoveAll\`\`2(dict,predicate)](#M-ADN-Extensions-DictionaryExtensions-RemoveAll``2-System-Collections-Generic-IDictionary{``0,``1},System-Func{``1,System-Boolean}- 'ADN.Extensions.DictionaryExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``1,System.Boolean})')
 - [IntegerExtensions](#T-ADN-Extensions-IntegerExtensions 'ADN.Extensions.IntegerExtensions')
   - [RoundNumber(value,step)](#M-ADN-Extensions-IntegerExtensions-RoundNumber-System-Double,System-Int32- 'ADN.Extensions.IntegerExtensions.RoundNumber(System.Double,System.Int32)')
   - [RoundNumber(value,step,min,max)](#M-ADN-Extensions-IntegerExtensions-RoundNumber-System-Double,System-Int32,System-Int32,System-Int32- 'ADN.Extensions.IntegerExtensions.RoundNumber(System.Double,System.Int32,System.Int32,System.Int32)')
@@ -43,6 +45,8 @@
   - [Variance(values)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double})')
   - [Variance(values,mean)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double)')
   - [Variance(values,mean,start,end)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double,System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double,System.Int32,System.Int32)')
+- [ObjectExtensions](#T-ADN-Extensions-ObjectExtensions 'ADN.Extensions.ObjectExtensions')
+  - [DeepClone\`\`1(source)](#M-ADN-Extensions-ObjectExtensions-DeepClone``1-``0- 'ADN.Extensions.ObjectExtensions.DeepClone``1(``0)')
 - [StringExtensions](#T-ADN-Extensions-StringExtensions 'ADN.Extensions.StringExtensions')
   - [FromHex(str)](#M-ADN-Extensions-StringExtensions-FromHex-System-String- 'ADN.Extensions.StringExtensions.FromHex(System.String)')
   - [IsAlphaNumeric(str)](#M-ADN-Extensions-StringExtensions-IsAlphaNumeric-System-String- 'ADN.Extensions.StringExtensions.IsAlphaNumeric(System.String)')
@@ -696,6 +700,44 @@ result is 02/16/2008 12:15:12
 */ 
 ```
 
+<a name='T-ADN-Extensions-DictionaryExtensions'></a>
+## DictionaryExtensions `type`
+
+##### Namespace
+
+ADN.Extensions
+
+##### Summary
+
+A static class of extension methods for [IDictionary](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.IDictionary 'System.Collections.IDictionary').
+
+<a name='M-ADN-Extensions-DictionaryExtensions-RemoveAll``2-System-Collections-Generic-IDictionary{``0,``1},System-Func{``1,System-Boolean}-'></a>
+### RemoveAll\`\`2(dict,predicate) `method`
+
+##### Summary
+
+Remove all elements in the dictionary that match the predicate.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| dict | [System.Collections.Generic.IDictionary{\`\`0,\`\`1}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IDictionary 'System.Collections.Generic.IDictionary{``0,``1}') | The dictionary to modify. |
+| predicate | [System.Func{\`\`1,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{``1,System.Boolean}') | The predicate to make the match. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TKey | Dictionary key. |
+| TValue | Dictionary value. |
+
+##### Example
+
+```csharp
+<![CDATA[var dictionary = new Dictionary<string, int>]]> 
+```
+
 <a name='T-ADN-Extensions-IntegerExtensions'></a>
 ## IntegerExtensions `type`
 
@@ -1111,6 +1153,45 @@ Variance of values.
 int start = 0;
 int end = 5;
 double mean = 2.5; 
+```
+
+<a name='T-ADN-Extensions-ObjectExtensions'></a>
+## ObjectExtensions `type`
+
+##### Namespace
+
+ADN.Extensions
+
+##### Summary
+
+A static class of extension methods for [Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object').
+
+<a name='M-ADN-Extensions-ObjectExtensions-DeepClone``1-``0-'></a>
+### DeepClone\`\`1(source) `method`
+
+##### Summary
+
+Clone a serializable object.
+
+##### Returns
+
+A clone of the object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [\`\`0](#T-``0 '``0') | Object to clone. |
+
+##### Example
+
+```csharp
+var person1 = new Person()
+{
+    FirstName = "Luke",
+    LastName = "Skywalwer"
+};
+var person2 = person1.DeepClone(); 
 ```
 
 <a name='T-ADN-Extensions-StringExtensions'></a>
