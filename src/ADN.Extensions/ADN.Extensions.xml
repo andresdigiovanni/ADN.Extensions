@@ -658,6 +658,28 @@
             </code>
             </example>
         </member>
+        <member name="T:ADN.Extensions.NumberExtensions">
+            <summary>
+            A static class of extension methods for numbers.
+            </summary>
+        </member>
+        <member name="M:ADN.Extensions.NumberExtensions.IsNumber(System.Object)">
+            <summary>
+            Checks if an object is a number type.
+            </summary>
+            <param name="value"></param>
+            <returns>True if the object is a number type.</returns>
+            <example>
+            <code lang="csharp">
+            double value = 42;
+            var result = value.IsNumber();
+            
+            /*
+            result is True
+            */
+            </code>
+            </example>
+        </member>
         <member name="T:ADN.Extensions.ObjectExtensions">
             <summary>
             A static class of extension methods for <see cref="T:System.Object"/>.

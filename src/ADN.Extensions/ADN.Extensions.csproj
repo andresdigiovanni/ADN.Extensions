@@ -12,7 +12,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://github.com/andresdigiovanni/ADN.Extensions/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/andresdigiovanni/ADN.Extensions</PackageProjectUrl>
-    <PackageTags>Extensions; Array; Base64; Byte; DataTable; DateTime; Dictionary; Integer; List; Object; String</PackageTags>
+    <PackageTags>Extensions; Array; Base64; Byte; DataTable; DateTime; Dictionary; Integer; Number; List; Object; String</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl> 
     <RepositoryUrl>https://github.com/andresdigiovanni/ADN.Extensions</RepositoryUrl> 
     <PackageIconUrl>https://raw.githubusercontent.com/andresdigiovanni/ADN.Extensions/master/icon.png</PackageIconUrl>

@@ -45,6 +45,8 @@
   - [Variance(values)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double})')
   - [Variance(values,mean)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double)')
   - [Variance(values,mean,start,end)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double,System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double,System.Int32,System.Int32)')
+- [NumberExtensions](#T-ADN-Extensions-NumberExtensions 'ADN.Extensions.NumberExtensions')
+  - [IsNumber(value)](#M-ADN-Extensions-NumberExtensions-IsNumber-System-Object- 'ADN.Extensions.NumberExtensions.IsNumber(System.Object)')
 - [ObjectExtensions](#T-ADN-Extensions-ObjectExtensions 'ADN.Extensions.ObjectExtensions')
   - [DeepClone\`\`1(source)](#M-ADN-Extensions-ObjectExtensions-DeepClone``1-``0- 'ADN.Extensions.ObjectExtensions.DeepClone``1(``0)')
 - [StringExtensions](#T-ADN-Extensions-StringExtensions 'ADN.Extensions.StringExtensions')
@@ -1153,6 +1155,44 @@ Variance of values.
 int start = 0;
 int end = 5;
 double mean = 2.5; 
+```
+
+<a name='T-ADN-Extensions-NumberExtensions'></a>
+## NumberExtensions `type`
+
+##### Namespace
+
+ADN.Extensions
+
+##### Summary
+
+A static class of extension methods for numbers.
+
+<a name='M-ADN-Extensions-NumberExtensions-IsNumber-System-Object-'></a>
+### IsNumber(value) `method`
+
+##### Summary
+
+Checks if an object is a number type.
+
+##### Returns
+
+True if the object is a number type.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| value | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+
+##### Example
+
+```csharp
+double value = 42;
+var result = value.IsNumber();
+/*
+result is True
+*/ 
 ```
 
 <a name='T-ADN-Extensions-ObjectExtensions'></a>

@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Added methods to DateTimeExtensions and StringExtensions.
-- DictionaryExtensions and ObjectExtensions.
+- DictionaryExtensions, NumberExtensions and ObjectExtensions.
 
 ## [1.1.0] - 2019-04-28
 ### Added
