@@ -33,11 +33,6 @@ namespace ADN.Extensions
                 throw new ArgumentException("The type must be serializable", "source");
             }
 
-            if (source is null)
-            {
-                return default;
-            }
-
             var formatter = new BinaryFormatter();
             using (Stream stream = new MemoryStream())
             {
