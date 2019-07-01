@@ -35,15 +35,6 @@ namespace ADN.Extensions.Tests
         }
 
         [Fact]
-        public void DeepClone_Null()
-        {
-            Person person1 = null;
-            var person2 = person1.DeepClone();
-
-            Assert.Null(person2);
-        }
-
-        [Fact]
         public void DeepClone_ArgumentException_NonSerializable()
         {
             var person1 = new Person_NonSerializable()
