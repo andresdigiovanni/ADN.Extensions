@@ -139,15 +139,49 @@ namespace ADN.Extensions
         /// */
         /// </code>
         /// </example>
-        public static double Median(this IEnumerable<double> values)
+        public static double Median(this List<double> values)
         {
-            int midIndex = values.Count() / 2;
-            var sorted = values.OrderBy(x => x).ToList();
+            return Median(values, 0, values.Count - 1);
+        }
 
-            double median =
-                values.Count() % 2 == 0
+        /// <summary>
+        /// Gets the value of the middle element of the list after sorted of a given range.
+        /// </summary>
+        /// <param name="values">The list of elements.</param>
+        /// <param name="start">Start index.</param>
+        /// <param name="end">End index.</param>
+        /// <returns>Index of the middle element.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// int start = 0;
+        /// int end = 2;
+        /// var values = new double[] { 2, 3, 5, 1, 4 };
+        /// var result = values.Median();
+        /// 
+        /// /*
+        /// result is 2
+        /// */
+        /// </code>
+        /// </example>
+        public static double Median(this List<double> values, int start, int end)
+        {
+            if (start > end)
+            {
+                throw (new ArgumentOutOfRangeException("end"));
+            }
+
+            double median = 0;
+            var copyValues = values.GetRange(start, end - start + 1);
+
+            if (copyValues.Count > 0)
+            {
+                int midIndex = copyValues.Count() / 2;
+                var sorted = copyValues.OrderBy(x => x).ToList();
+
+                median = copyValues.Count() % 2 == 0
                     ? (sorted[midIndex] + sorted[midIndex - 1]) / 2
                     : sorted[midIndex];
+            }
 
             return median;
         }

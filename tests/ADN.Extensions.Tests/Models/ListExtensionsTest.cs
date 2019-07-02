@@ -108,15 +108,22 @@ namespace ADN.Extensions.Tests
         [ClassData(typeof(MedianData))]
         public void Median(double[] values, double expected)
         {
-            var result = values.Median();
+            List<double> list = new List<double>();
+            list.AddRange(values);
+            var result = list.Median();
 
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void Median_Exception_Value_Null()
+        [Theory]
+        [ClassData(typeof(MedianDelimitedData))]
+        public void MedianDelimited(double[] values, int start, int end, double expected)
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Median(null));
+            List<double> list = new List<double>();
+            list.AddRange(values);
+            var result = list.Median(start, end);
+
+            Assert.Equal(expected, result);
         }
 
         [Theory]
@@ -236,6 +243,20 @@ namespace ADN.Extensions.Tests
                 yield return new object[] { new double[] { 1 }, 1 };
                 yield return new object[] { new double[] { 2, 3, 5, 1, 4 }, 3 };
                 yield return new object[] { new double[] { 2, 1, 4, 5, 3, 0 }, 2.5 };
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
+        public class MedianDelimitedData : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                yield return new object[] { new double[] { 0 }, 0, 0, 0 };
+                yield return new object[] { new double[] { 1 }, 0, 0, 1 };
+                yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }, 0, 8, 4 };
+                yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }, 1, 7, 4 };
+                yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }, 0, 4, 2 };
             }
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

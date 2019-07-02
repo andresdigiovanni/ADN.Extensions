@@ -525,7 +525,7 @@
             </code>
             </example>
         </member>
-        <member name="M:ADN.Extensions.ListExtensions.Median(System.Collections.Generic.IEnumerable{System.Double})">
+        <member name="M:ADN.Extensions.ListExtensions.Median(System.Collections.Generic.List{System.Double})">
             <summary>
             Gets the value of the middle element of the list after sorted.
             </summary>
@@ -538,6 +538,27 @@
             
             /*
             result is 3
+            */
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.ListExtensions.Median(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)">
+            <summary>
+            Gets the value of the middle element of the list after sorted of a given range.
+            </summary>
+            <param name="values">The list of elements.</param>
+            <param name="start">Start index.</param>
+            <param name="end">End index.</param>
+            <returns>Index of the middle element.</returns>
+            <example>
+            <code lang="csharp">
+            int start = 0;
+            int end = 2;
+            var values = new double[] { 2, 3, 5, 1, 4 };
+            var result = values.Median();
+            
+            /*
+            result is 2
             */
             </code>
             </example>

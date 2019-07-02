@@ -38,7 +38,8 @@
   - [IsSame\`\`1(first,second)](#M-ADN-Extensions-ListExtensions-IsSame``1-System-Collections-Generic-IList{``0},System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.IsSame``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})')
   - [Mean(values)](#M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double})')
   - [Mean(values,start,end)](#M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double},System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)')
-  - [Median(values)](#M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-IEnumerable{System-Double}- 'ADN.Extensions.ListExtensions.Median(System.Collections.Generic.IEnumerable{System.Double})')
+  - [Median(values)](#M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.Median(System.Collections.Generic.List{System.Double})')
+  - [Median(values,start,end)](#M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-List{System-Double},System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Median(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)')
   - [Shuffle\`\`1(values)](#M-ADN-Extensions-ListExtensions-Shuffle``1-System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})')
   - [StandardDeviation(values)](#M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double})')
   - [StandardDeviation(values,start,end)](#M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double},System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)')
@@ -980,7 +981,7 @@ int start = 0;
 int end = 5; 
 ```
 
-<a name='M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-IEnumerable{System-Double}-'></a>
+<a name='M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-List{System-Double}-'></a>
 ### Median(values) `method`
 
 ##### Summary
@@ -995,7 +996,7 @@ Index of the middle element.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| values | [System.Collections.Generic.IEnumerable{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{System.Double}') | The list of elements. |
+| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
 
 ##### Example
 
@@ -1004,6 +1005,37 @@ var values = new double[] { 2, 3, 5, 1, 4 };
 var result = values.Median();
 /*
 result is 3
+*/ 
+```
+
+<a name='M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-List{System-Double},System-Int32,System-Int32-'></a>
+### Median(values,start,end) `method`
+
+##### Summary
+
+Gets the value of the middle element of the list after sorted of a given range.
+
+##### Returns
+
+Index of the middle element.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
+| start | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Start index. |
+| end | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | End index. |
+
+##### Example
+
+```csharp
+int start = 0;
+int end = 2;
+var values = new double[] { 2, 3, 5, 1, 4 };
+var result = values.Median();
+/*
+result is 2
 */ 
 ```
 
