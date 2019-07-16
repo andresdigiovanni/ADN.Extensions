@@ -1,807 +1,926 @@
-<a name='assembly'></a>
 # ADN.Extensions
 
-## Contents
+# Content
 
-- [ArrayExtensions](#T-ADN-Extensions-ArrayExtensions 'ADN.Extensions.ArrayExtensions')
-  - [ArrayEqual\`\`1(first,second)](#M-ADN-Extensions-ArrayExtensions-ArrayEqual``1-``0[],``0[]- 'ADN.Extensions.ArrayExtensions.ArrayEqual``1(``0[],``0[])')
-  - [Combine\`\`1(first,second)](#M-ADN-Extensions-ArrayExtensions-Combine``1-``0[],``0[]- 'ADN.Extensions.ArrayExtensions.Combine``1(``0[],``0[])')
-  - [InsertIntoArray\`\`1(array,index,item)](#M-ADN-Extensions-ArrayExtensions-InsertIntoArray``1-``0[],System-Int32,``0- 'ADN.Extensions.ArrayExtensions.InsertIntoArray``1(``0[],System.Int32,``0)')
-  - [SetAllValues\`\`1(array,value)](#M-ADN-Extensions-ArrayExtensions-SetAllValues``1-``0[],``0- 'ADN.Extensions.ArrayExtensions.SetAllValues``1(``0[],``0)')
-  - [SplitByNumberOfDivisions\`\`1(array,numberOfDivisions)](#M-ADN-Extensions-ArrayExtensions-SplitByNumberOfDivisions``1-``0[],System-Int32- 'ADN.Extensions.ArrayExtensions.SplitByNumberOfDivisions``1(``0[],System.Int32)')
-  - [SplitByNumberOfElementsInDivision\`\`1(array,elementsInDivision)](#M-ADN-Extensions-ArrayExtensions-SplitByNumberOfElementsInDivision``1-``0[],System-Int32- 'ADN.Extensions.ArrayExtensions.SplitByNumberOfElementsInDivision``1(``0[],System.Int32)')
-  - [SubArray\`\`1(array,index,length)](#M-ADN-Extensions-ArrayExtensions-SubArray``1-``0[],System-Int32,System-Int32- 'ADN.Extensions.ArrayExtensions.SubArray``1(``0[],System.Int32,System.Int32)')
-- [Base64Extensions](#T-ADN-Extensions-Base64Extensions 'ADN.Extensions.Base64Extensions')
-  - [Base64Decode(base64EncodedData)](#M-ADN-Extensions-Base64Extensions-Base64Decode-System-String- 'ADN.Extensions.Base64Extensions.Base64Decode(System.String)')
-  - [Base64Encode(plainText)](#M-ADN-Extensions-Base64Extensions-Base64Encode-System-String- 'ADN.Extensions.Base64Extensions.Base64Encode(System.String)')
-- [ByteExtensions](#T-ADN-Extensions-ByteExtensions 'ADN.Extensions.ByteExtensions')
-  - [BytesToHexa(bytes,separator)](#M-ADN-Extensions-ByteExtensions-BytesToHexa-System-Byte[],System-String- 'ADN.Extensions.ByteExtensions.BytesToHexa(System.Byte[],System.String)')
-  - [BytesToString(bytes)](#M-ADN-Extensions-ByteExtensions-BytesToString-System-Byte[]- 'ADN.Extensions.ByteExtensions.BytesToString(System.Byte[])')
-  - [HexaToBytes(value,separator)](#M-ADN-Extensions-ByteExtensions-HexaToBytes-System-String,System-String- 'ADN.Extensions.ByteExtensions.HexaToBytes(System.String,System.String)')
-  - [StringToBytes(value)](#M-ADN-Extensions-ByteExtensions-StringToBytes-System-String- 'ADN.Extensions.ByteExtensions.StringToBytes(System.String)')
-- [DataTableExtensions](#T-ADN-Extensions-DataTableExtensions 'ADN.Extensions.DataTableExtensions')
-  - [ToHtmlTable(dataTable,tableCssClasses)](#M-ADN-Extensions-DataTableExtensions-ToHtmlTable-System-Data-DataTable,ADN-Extensions-DataTableExtensions-TableCssClasses- 'ADN.Extensions.DataTableExtensions.ToHtmlTable(System.Data.DataTable,ADN.Extensions.DataTableExtensions.TableCssClasses)')
-- [DateTimeExtensions](#T-ADN-Extensions-DateTimeExtensions 'ADN.Extensions.DateTimeExtensions')
-  - [DateTimeToUnixTimeStamp(dateTime)](#M-ADN-Extensions-DateTimeExtensions-DateTimeToUnixTimeStamp-System-DateTime- 'ADN.Extensions.DateTimeExtensions.DateTimeToUnixTimeStamp(System.DateTime)')
-  - [TrimMilliseconds(dateTime)](#M-ADN-Extensions-DateTimeExtensions-TrimMilliseconds-System-DateTime- 'ADN.Extensions.DateTimeExtensions.TrimMilliseconds(System.DateTime)')
-  - [TrimSecondsAndMilliseconds(dateTime)](#M-ADN-Extensions-DateTimeExtensions-TrimSecondsAndMilliseconds-System-DateTime- 'ADN.Extensions.DateTimeExtensions.TrimSecondsAndMilliseconds(System.DateTime)')
-  - [TrimTicks(dateTime)](#M-ADN-Extensions-DateTimeExtensions-TrimTicks-System-DateTime- 'ADN.Extensions.DateTimeExtensions.TrimTicks(System.DateTime)')
-  - [UnixTimeStampToDateTime(unixTimestamp)](#M-ADN-Extensions-DateTimeExtensions-UnixTimeStampToDateTime-System-Int64- 'ADN.Extensions.DateTimeExtensions.UnixTimeStampToDateTime(System.Int64)')
-- [DictionaryExtensions](#T-ADN-Extensions-DictionaryExtensions 'ADN.Extensions.DictionaryExtensions')
-  - [RemoveAll\`\`2(dict,predicate)](#M-ADN-Extensions-DictionaryExtensions-RemoveAll``2-System-Collections-Generic-IDictionary{``0,``1},System-Func{``1,System-Boolean}- 'ADN.Extensions.DictionaryExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``1,System.Boolean})')
-- [IntegerExtensions](#T-ADN-Extensions-IntegerExtensions 'ADN.Extensions.IntegerExtensions')
-  - [RoundNumber(value,step)](#M-ADN-Extensions-IntegerExtensions-RoundNumber-System-Double,System-Int32- 'ADN.Extensions.IntegerExtensions.RoundNumber(System.Double,System.Int32)')
-  - [RoundNumber(value,step,min,max)](#M-ADN-Extensions-IntegerExtensions-RoundNumber-System-Double,System-Int32,System-Int32,System-Int32- 'ADN.Extensions.IntegerExtensions.RoundNumber(System.Double,System.Int32,System.Int32,System.Int32)')
-- [ListExtensions](#T-ADN-Extensions-ListExtensions 'ADN.Extensions.ListExtensions')
-  - [IndexOfMax\`\`1(values)](#M-ADN-Extensions-ListExtensions-IndexOfMax``1-System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.IndexOfMax``1(System.Collections.Generic.IList{``0})')
-  - [IndexOfMin\`\`1(values)](#M-ADN-Extensions-ListExtensions-IndexOfMin``1-System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.IndexOfMin``1(System.Collections.Generic.IList{``0})')
-  - [IsSame\`\`1(first,second)](#M-ADN-Extensions-ListExtensions-IsSame``1-System-Collections-Generic-IList{``0},System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.IsSame``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})')
-  - [Mean(values)](#M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double})')
-  - [Mean(values,start,end)](#M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double},System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)')
-  - [Median(values)](#M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.Median(System.Collections.Generic.List{System.Double})')
-  - [Median(values,start,end)](#M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-List{System-Double},System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Median(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)')
-  - [Shuffle\`\`1(values)](#M-ADN-Extensions-ListExtensions-Shuffle``1-System-Collections-Generic-IList{``0}- 'ADN.Extensions.ListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})')
-  - [StandardDeviation(values)](#M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double})')
-  - [StandardDeviation(values,start,end)](#M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double},System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.StandardDeviation(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)')
-  - [Variance(values)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double}- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double})')
-  - [Variance(values,mean)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double)')
-  - [Variance(values,mean,start,end)](#M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double,System-Int32,System-Int32- 'ADN.Extensions.ListExtensions.Variance(System.Collections.Generic.List{System.Double},System.Double,System.Int32,System.Int32)')
-- [NumberExtensions](#T-ADN-Extensions-NumberExtensions 'ADN.Extensions.NumberExtensions')
-  - [IsNumber(value)](#M-ADN-Extensions-NumberExtensions-IsNumber-System-Object- 'ADN.Extensions.NumberExtensions.IsNumber(System.Object)')
-- [ObjectExtensions](#T-ADN-Extensions-ObjectExtensions 'ADN.Extensions.ObjectExtensions')
-  - [DeepClone\`\`1(source)](#M-ADN-Extensions-ObjectExtensions-DeepClone``1-``0- 'ADN.Extensions.ObjectExtensions.DeepClone``1(``0)')
-- [StringExtensions](#T-ADN-Extensions-StringExtensions 'ADN.Extensions.StringExtensions')
-  - [FromHex(str)](#M-ADN-Extensions-StringExtensions-FromHex-System-String- 'ADN.Extensions.StringExtensions.FromHex(System.String)')
-  - [IsAlphaNumeric(str)](#M-ADN-Extensions-StringExtensions-IsAlphaNumeric-System-String- 'ADN.Extensions.StringExtensions.IsAlphaNumeric(System.String)')
-  - [IsValidEmailAddress(str)](#M-ADN-Extensions-StringExtensions-IsValidEmailAddress-System-String- 'ADN.Extensions.StringExtensions.IsValidEmailAddress(System.String)')
-  - [Left(str,length)](#M-ADN-Extensions-StringExtensions-Left-System-String,System-Int32- 'ADN.Extensions.StringExtensions.Left(System.String,System.Int32)')
-  - [Mid(str,startIndex,length)](#M-ADN-Extensions-StringExtensions-Mid-System-String,System-Int32,System-Int32- 'ADN.Extensions.StringExtensions.Mid(System.String,System.Int32,System.Int32)')
-  - [Right(str,length)](#M-ADN-Extensions-StringExtensions-Right-System-String,System-Int32- 'ADN.Extensions.StringExtensions.Right(System.String,System.Int32)')
-  - [ToHex(str)](#M-ADN-Extensions-StringExtensions-ToHex-System-String- 'ADN.Extensions.StringExtensions.ToHex(System.String)')
-  - [TrimNonPrintableAscii(str)](#M-ADN-Extensions-StringExtensions-TrimNonPrintableAscii-System-String- 'ADN.Extensions.StringExtensions.TrimNonPrintableAscii(System.String)')
-- [TableCssClasses](#T-ADN-Extensions-DataTableExtensions-TableCssClasses 'ADN.Extensions.DataTableExtensions.TableCssClasses')
+- [ArrayExtensions](#T:ADN.Extensions.ArrayExtensions)
 
-<a name='T-ADN-Extensions-ArrayExtensions'></a>
-## ArrayExtensions `type`
+  - [ArrayEqual`<T>(first, second)](#ArrayExtensions.ArrayEqual`<T>(first,second))
 
-##### Namespace
+  - [Combine`<T>(first, second)](#ArrayExtensions.Combine`<T>(first,second))
 
-ADN.Extensions
+  - [InsertIntoArray`<T>(array, index, item)](#ArrayExtensions.InsertIntoArray`<T>(array,index,item))
 
-##### Summary
+  - [SetAllValues`<T>(array, value)](#ArrayExtensions.SetAllValues`<T>(array,value))
 
-A static class of extension methods for [Array](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Array 'System.Array').
+  - [SplitByNumberOfDivisions`<T>(array, numberOfDivisions)](#ArrayExtensions.SplitByNumberOfDivisions`<T>(array,numberOfDivisions))
 
-<a name='M-ADN-Extensions-ArrayExtensions-ArrayEqual``1-``0[],``0[]-'></a>
-### ArrayEqual\`\`1(first,second) `method`
+  - [SplitByNumberOfElementsInDivision`<T>(array, elementsInDivision)](#ArrayExtensions.SplitByNumberOfElementsInDivision`<T>(array,elementsInDivision))
 
-##### Summary
+  - [SubArray`<T>(array, index, length)](#ArrayExtensions.SubArray`<T>(array,index,length))
+
+- [Base64Extensions](#T:ADN.Extensions.Base64Extensions)
+
+  - [Base64Decode(base64EncodedData)](#Base64Extensions.Base64Decode(base64EncodedData))
+
+  - [Base64Encode(plainText)](#Base64Extensions.Base64Encode(plainText))
+
+- [ByteExtensions](#T:ADN.Extensions.ByteExtensions)
+
+  - [BytesToHexa(bytes, separator)](#ByteExtensions.BytesToHexa(bytes,separator))
+
+  - [BytesToString(bytes)](#ByteExtensions.BytesToString(bytes))
+
+  - [HexaToBytes(value, separator)](#ByteExtensions.HexaToBytes(value,separator))
+
+  - [StringToBytes(value)](#ByteExtensions.StringToBytes(value))
+
+- [DataTableExtensions](#T:ADN.Extensions.DataTableExtensions)
+
+- [DataTableExtensions.TableCssClasses](#T:ADN.Extensions.DataTableExtensions.TableCssClasses)
+
+  - [DataTableExtensions.ToHtmlTable(dataTable, tableCssClasses)](#DataTableExtensions.ToHtmlTable(dataTable,tableCssClasses))
+
+- [DateTimeExtensions](#T:ADN.Extensions.DateTimeExtensions)
+
+  - [DateTimeToUnixTimeStamp(dateTime)](#DateTimeExtensions.DateTimeToUnixTimeStamp(dateTime))
+
+  - [TrimMilliseconds(dateTime)](#DateTimeExtensions.TrimMilliseconds(dateTime))
+
+  - [TrimSecondsAndMilliseconds(dateTime)](#DateTimeExtensions.TrimSecondsAndMilliseconds(dateTime))
+
+  - [TrimTicks(dateTime)](#DateTimeExtensions.TrimTicks(dateTime))
+
+  - [UnixTimeStampToDateTime(unixTimestamp)](#DateTimeExtensions.UnixTimeStampToDateTime(unixTimestamp))
+
+- [DictionaryExtensions](#T:ADN.Extensions.DictionaryExtensions)
+
+  - [RemoveAll``2(System.Collections.Generic.IDictionary{``0,`<T>},System.Func{`<T>,System.Boolean})](#DictionaryExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,`<T>},System.Func{`<T>,System.Boolean}))
+
+- [IntegerExtensions](#T:ADN.Extensions.IntegerExtensions)
+
+  - [RoundNumber(value, step)](#IntegerExtensions.RoundNumber(value,step))
+
+  - [RoundNumber(value, step, min, max)](#IntegerExtensions.RoundNumber(value,step,min,max))
+
+- [ListExtensions](#T:ADN.Extensions.ListExtensions)
+
+  - [IndexOfMax`<T>(values)](#ListExtensions.IndexOfMax`<T>(values))
+
+  - [IndexOfMin`<T>(values)](#ListExtensions.IndexOfMin`<T>(values))
+
+  - [IsSame`<T>(first, second)](#ListExtensions.IsSame`<T>(first,second))
+
+  - [Mean(values)](#ListExtensions.Mean(values))
+
+  - [Mean(values, start, end)](#ListExtensions.Mean(values,start,end))
+
+  - [Median(values)](#ListExtensions.Median(values))
+
+  - [Median(values, start, end)](#ListExtensions.Median(values,start,end))
+
+  - [Shuffle`<T>(values)](#ListExtensions.Shuffle`<T>(values))
+
+  - [StandardDeviation(values)](#ListExtensions.StandardDeviation(values))
+
+  - [StandardDeviation(values, start, end)](#ListExtensions.StandardDeviation(values,start,end))
+
+  - [Variance(values)](#ListExtensions.Variance(values))
+
+  - [Variance(values, mean)](#ListExtensions.Variance(values,mean))
+
+  - [Variance(values, mean, start, end)](#ListExtensions.Variance(values,mean,start,end))
+
+- [NumberExtensions](#T:ADN.Extensions.NumberExtensions)
+
+  - [IsNumber(value)](#NumberExtensions.IsNumber(value))
+
+- [ObjectExtensions](#T:ADN.Extensions.ObjectExtensions)
+
+  - [DeepClone`<T>(source)](#ObjectExtensions.DeepClone`<T>(source))
+
+- [StringExtensions](#T:ADN.Extensions.StringExtensions)
+
+  - [FromHex(str)](#StringExtensions.FromHex(str))
+
+  - [IsAlphaNumeric(str)](#StringExtensions.IsAlphaNumeric(str))
+
+  - [IsValidEmailAddress(str)](#StringExtensions.IsValidEmailAddress(str))
+
+  - [Left(str, length)](#StringExtensions.Left(str,length))
+
+  - [Mid(str, startIndex, length)](#StringExtensions.Mid(str,startIndex,length))
+
+  - [Right(str, length)](#StringExtensions.Right(str,length))
+
+  - [ToHex(str)](#StringExtensions.ToHex(str))
+
+  - [TrimNonPrintableAscii(str)](#StringExtensions.TrimNonPrintableAscii(str))
+
+<a name='T:ADN.Extensions.ArrayExtensions'></a>
+
+
+## ArrayExtensions
+
+A static class of extension methods for .
+
+<a name='ArrayExtensions.ArrayEqual`<T>(first,second)'></a>
+
+
+### ArrayEqual`<T>(first, second)
 
 Checks if the Arrays are equal.
 
-##### Returns
 
-Returns `true`if all element match and `false`otherwise.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| first | [\`\`0[]](#T-``0[] '``0[]') | The [Array](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Array 'System.Array')that contains data to compare with. |
-| second | [\`\`0[]](#T-``0[] '``0[]') | The [Array](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Array 'System.Array')that contains data to compare to. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| T | Array type. |
+| first | *``0[]*<br>The that contains data to compare with. |
 
-##### Example
+#### Parameters
+
+| second | *``0[]*<br>The that contains data to compare to. |
+
+
+#### Returns
+
+Returns true if all element match and false otherwise.
+
+
+#### Example
 
 ```csharp
 var first= new double[] { 0, 0, 0, 0, 0 };
 var second = new double[] { 0, 0, 0, 0, 0 };
 var result = first.ArrayEqual(second);
+
 /*
 result is true
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ArrayExtensions-Combine``1-``0[],``0[]-'></a>
-### Combine\`\`1(first,second) `method`
+<a name='ArrayExtensions.Combine`<T>(first,second)'></a>
 
-##### Summary
+
+### Combine`<T>(first, second)
 
 Combine the Arrays.
 
-##### Returns
 
-T[].
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| first | [\`\`0[]](#T-``0[] '``0[]') | First element to combine. |
-| second | [\`\`0[]](#T-``0[] '``0[]') | Second element to combine. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| T | Array type. |
+| first | *``0[]*<br>First element to combine. |
 
-##### Example
+#### Parameters
+
+| second | *``0[]*<br>Second element to combine. |
+
+
+#### Returns
+
+T[].
+
+
+#### Example
 
 ```csharp
 var first= new double[] { 0, 1, 2 };
 var second = new double[] { 3, 4, 5 };
 var result = first.Combine(second);
+
 /*
 result contains the values { 0, 1, 2, 3, 4, 5 }
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ArrayExtensions-InsertIntoArray``1-``0[],System-Int32,``0-'></a>
-### InsertIntoArray\`\`1(array,index,item) `method`
+<a name='ArrayExtensions.InsertIntoArray`<T>(array,index,item)'></a>
 
-##### Summary
 
-Inserts an element into the [Array](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Array 'System.Array')at the specified index.
+### InsertIntoArray`<T>(array, index, item)
 
-##### Returns
+Inserts an element into the at the specified index.
 
-A reference to the changed array.
 
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| array | [\`\`0[]](#T-``0[] '``0[]') | The one-dimensional, zero-based array. |
-| index | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | The zero-based index at which item should be inserted. |
-| item | [\`\`0](#T-``0 '``0') | The object to insert. The value can be null for reference types. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| T | Array type. |
+| array | *``0[]*<br>The one-dimensional, zero-based array. |
 
-##### Example
+#### Parameters
+
+| index | *System.Int32*<br>The zero-based index at which item should be inserted. |
+
+#### Parameters
+
+| item | *``0*<br>The object to insert. The value can be null for reference types. |
+
+
+#### Returns
+
+A reference to the changed array.
+
+
+#### Example
 
 ```csharp
 var array = new double[] { 1, 2, 3, 4, 5 };
 var result = array.InsertIntoArray(2, 0);
+
 /*
 result contains the values { 1, 2, 0, 3, 4, 5 }
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ArrayExtensions-SetAllValues``1-``0[],``0-'></a>
-### SetAllValues\`\`1(array,value) `method`
+<a name='ArrayExtensions.SetAllValues`<T>(array,value)'></a>
 
-##### Summary
+
+### SetAllValues`<T>(array, value)
 
 Sets all values.
 
-##### Returns
 
-A reference to the changed array.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| array | [\`\`0[]](#T-``0[] '``0[]') | The one-dimensional, zero-based array. |
-| value | [\`\`0](#T-``0 '``0') | The value. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| T | The type of the elements of the array that will be modified. |
+| array | *``0[]*<br>The one-dimensional, zero-based array. |
 
-##### Example
+#### Parameters
+
+| value | *``0*<br>The value. |
+
+
+#### Returns
+
+A reference to the changed array.
+
+
+#### Example
 
 ```csharp
 var array = new double[] { 0, 0, 0, 0, 0 };
 var result = array.SetAllValues(1);
+
 /*
 result contains the values { 1, 1, 1, 1, 1 }
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ArrayExtensions-SplitByNumberOfDivisions``1-``0[],System-Int32-'></a>
-### SplitByNumberOfDivisions\`\`1(array,numberOfDivisions) `method`
+<a name='ArrayExtensions.SplitByNumberOfDivisions`<T>(array,numberOfDivisions)'></a>
 
-##### Summary
+
+### SplitByNumberOfDivisions`<T>(array, numberOfDivisions)
 
 Split an array into subarrays by specifying the number of divisions.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| array | *``0[]*<br>Array to split. |
+
+#### Parameters
+
+| numberOfDivisions | *System.Int32*<br>Number of divisions. |
+
+
+#### Returns
 
 Subarrays.
 
-##### Parameters
+*System.DivideByZeroException:* Number of divisions is zero.
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| array | [\`\`0[]](#T-``0[] '``0[]') | Array to split. |
-| numberOfDivisions | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of divisions. |
 
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T | The type of the elements of the array that will be split. |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.DivideByZeroException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DivideByZeroException 'System.DivideByZeroException') | Number of divisions is zero. |
-
-##### Example
+#### Example
 
 ```csharp
 var array = new double[] { 0, 1, 2 };
 var numberOfDivisions = 2;
 var result = array.SplitByNumberOfDivisions(numberOfDivisions);
+
 /*
 result contains the values { { 0, 1 }, { 2 } }
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ArrayExtensions-SplitByNumberOfElementsInDivision``1-``0[],System-Int32-'></a>
-### SplitByNumberOfElementsInDivision\`\`1(array,elementsInDivision) `method`
+<a name='ArrayExtensions.SplitByNumberOfElementsInDivision`<T>(array,elementsInDivision)'></a>
 
-##### Summary
+
+### SplitByNumberOfElementsInDivision`<T>(array, elementsInDivision)
 
 Split an array into subarrays by specifying the number of elements in each division.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| array | *``0[]*<br>Array to split. |
+
+#### Parameters
+
+| elementsInDivision | *System.Int32*<br>Elements in each division. |
+
+
+#### Returns
 
 Subarrays.
 
-##### Parameters
+*System.DivideByZeroException:* Number of elements in division is zero.
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| array | [\`\`0[]](#T-``0[] '``0[]') | Array to split. |
-| elementsInDivision | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Elements in each division. |
 
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| T | The type of the elements of the array that will be split. |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.DivideByZeroException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DivideByZeroException 'System.DivideByZeroException') | Number of elements in division is zero. |
-
-##### Example
+#### Example
 
 ```csharp
 var array = new double[] { 0, 1, 2 };
 var elementsInDivision = 2;
 var result = array.SplitByNumberOfElementsInDivision(elementsInDivision);
+
 /*
 result contains the values { { 0, 1 }, { 2 } }
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ArrayExtensions-SubArray``1-``0[],System-Int32,System-Int32-'></a>
-### SubArray\`\`1(array,index,length) `method`
+<a name='ArrayExtensions.SubArray`<T>(array,index,length)'></a>
 
-##### Summary
+
+### SubArray`<T>(array, index, length)
 
 Subs the array.
 
-##### Returns
 
-T[].
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| array | [\`\`0[]](#T-``0[] '``0[]') | The data. |
-| index | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | The index. |
-| length | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | The length. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| T | The type of the elements of the array that will be modified. |
+| array | *``0[]*<br>The data. |
 
-##### Example
+#### Parameters
+
+| index | *System.Int32*<br>The index. |
+
+#### Parameters
+
+| length | *System.Int32*<br>The length. |
+
+
+#### Returns
+
+T[].
+
+
+#### Example
 
 ```csharp
 var array = new double[] { 0, 1, 2, 3, 4, 5 };
 var index = 1;
 var length = 4;
 var result = array.SubArray(index, length);
+
 /*
 result contains the values { 1, 2, 3, 4 }
-*/ 
+*/
 ```
 
-<a name='T-ADN-Extensions-Base64Extensions'></a>
-## Base64Extensions `type`
+<a name='T:ADN.Extensions.Base64Extensions'></a>
 
-##### Namespace
 
-ADN.Extensions
-
-##### Summary
+## Base64Extensions
 
 A static class of methods for Base64 strings.
 
-<a name='M-ADN-Extensions-Base64Extensions-Base64Decode-System-String-'></a>
-### Base64Decode(base64EncodedData) `method`
+<a name='Base64Extensions.Base64Decode(base64EncodedData)'></a>
 
-##### Summary
+
+### Base64Decode(base64EncodedData)
 
 Converts the specified string, which encodes binary data as base-64 digits, to an equivalent plain text string.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| base64EncodedData | *System.String*<br>String encoded with base-64 digits. |
+
+
+#### Returns
 
 Plain text string.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| base64EncodedData | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String encoded with base-64 digits. |
-
-##### Example
+#### Example
 
 ```csharp
 var value = "MDEyMzQ1Njc4OQ==";
 var result = value.Base64Decode();
+
 /*
 result is "0123456789"
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-Base64Extensions-Base64Encode-System-String-'></a>
-### Base64Encode(plainText) `method`
+<a name='Base64Extensions.Base64Encode(plainText)'></a>
 
-##### Summary
+
+### Base64Encode(plainText)
 
 Converts the value of a plain text string to its equivalent string representation that is encoded with base-64 digits.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| plainText | *System.String*<br>Plain text string. |
+
+
+#### Returns
 
 String encoded with base-64 digits.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| plainText | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Plain text string. |
-
-##### Example
+#### Example
 
 ```csharp
 var value = "0123456789";
 var result = value.Base64Encode();
+
 /*
 result is "MDEyMzQ1Njc4OQ=="
-*/ 
+*/
 ```
 
-<a name='T-ADN-Extensions-ByteExtensions'></a>
-## ByteExtensions `type`
+<a name='T:ADN.Extensions.ByteExtensions'></a>
 
-##### Namespace
 
-ADN.Extensions
+## ByteExtensions
 
-##### Summary
+A static class of extension methods for .
 
-A static class of extension methods for [Byte](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Byte 'System.Byte')[Array](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Array 'System.Array').
+<a name='ByteExtensions.BytesToHexa(bytes,separator)'></a>
 
-<a name='M-ADN-Extensions-ByteExtensions-BytesToHexa-System-Byte[],System-String-'></a>
-### BytesToHexa(bytes,separator) `method`
 
-##### Summary
+### BytesToHexa(bytes, separator)
 
 Converts the numeric value of a byte array to its equivalent hexadecimal string.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| bytes | *System.Byte[]*<br>The value. |
+
+#### Parameters
+
+| separator | *System.String*<br>Hexadecimal values separator. |
+
+
+#### Returns
 
 Hexadecimal string.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| bytes | [System.Byte[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Byte[] 'System.Byte[]') | The value. |
-| separator | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Hexadecimal values separator. |
-
-##### Example
+#### Example
 
 ```csharp
 var array = new byte[] { 48, 49, 50, 51, 52 };
 var separator = "-";
 var result = array.BytesToHexa(separator);
+
 /*
 result is "30-31-32-33-34"
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ByteExtensions-BytesToString-System-Byte[]-'></a>
-### BytesToString(bytes) `method`
+<a name='ByteExtensions.BytesToString(bytes)'></a>
 
-##### Summary
+
+### BytesToString(bytes)
 
 Decodes a sequence of bytes from the specified byte array into a string.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| bytes | *System.Byte[]*<br>The byte array containing the sequence of bytes to decode. |
+
+
+#### Returns
 
 A string that contains the results of decoding the specified sequence of bytes.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| bytes | [System.Byte[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Byte[] 'System.Byte[]') | The byte array containing the sequence of bytes to decode. |
+#### Remarks
 
-##### Example
+Equivalent to System.Text.Encoding.UTF8.GetString().
+
+
+#### Example
 
 ```csharp
 var array = new byte[] { 48, 49, 50, 51, 52 };
 var result = array.BytesToString();
+
 /*
 result is "01234"
-*/ 
+*/
 ```
 
-##### Remarks
+<a name='ByteExtensions.HexaToBytes(value,separator)'></a>
 
-Equivalent to System.Text.Encoding.UTF8.GetString().
 
-<a name='M-ADN-Extensions-ByteExtensions-HexaToBytes-System-String,System-String-'></a>
-### HexaToBytes(value,separator) `method`
-
-##### Summary
+### HexaToBytes(value, separator)
 
 Converts the hexadecimal string to its quivalent numeric value byte array.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| value | *System.String*<br>The value. |
+
+#### Parameters
+
+| separator | *System.String*<br>Hexadecimal values separator. |
+
+
+#### Returns
 
 Byte array.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| value | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The value. |
-| separator | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Hexadecimal values separator. |
-
-##### Example
+#### Example
 
 ```csharp
 var value = "30-31-32-33-34";
 var separator = "-";
 var result = value.HexaToBytes(separator);
+
 /*
 result contains the values { 48, 49, 50, 51, 52 }
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ByteExtensions-StringToBytes-System-String-'></a>
-### StringToBytes(value) `method`
+<a name='ByteExtensions.StringToBytes(value)'></a>
 
-##### Summary
+
+### StringToBytes(value)
 
 Encodes a set of characters into a sequence of bytes.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| value | *System.String*<br>The character array containing the characters to encode. |
+
+
+#### Returns
 
 A byte array containing the results of encoding the specified set of characters.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| value | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The character array containing the characters to encode. |
+#### Remarks
 
-##### Example
+Equivalent to System.Text.Encoding.UTF8.GetBytes().
+
+
+#### Example
 
 ```csharp
 var value = "01234";
 var result = value.StringToBytes();
+
 /*
 result contains the values { 48, 49, 50, 51, 52 }
-*/ 
+*/
 ```
 
-##### Remarks
+<a name='T:ADN.Extensions.DataTableExtensions'></a>
 
-Equivalent to System.Text.Encoding.UTF8.GetBytes().
 
-<a name='T-ADN-Extensions-DataTableExtensions'></a>
-## DataTableExtensions `type`
+## DataTableExtensions
 
-##### Namespace
+A static class of extension methods for .
 
-ADN.Extensions
+<a name='T:ADN.Extensions.DataTableExtensions.TableCssClasses'></a>
 
-##### Summary
 
-A static class of extension methods for [DataTable](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.DataTable 'System.Data.DataTable').
+## DataTableExtensions.TableCssClasses
 
-<a name='M-ADN-Extensions-DataTableExtensions-ToHtmlTable-System-Data-DataTable,ADN-Extensions-DataTableExtensions-TableCssClasses-'></a>
-### ToHtmlTable(dataTable,tableCssClasses) `method`
+CSS classes.
 
-##### Summary
+<a name='DataTableExtensions.ToHtmlTable(dataTable,tableCssClasses)'></a>
+
+
+### DataTableExtensions.ToHtmlTable(dataTable, tableCssClasses)
 
 Convert a DataTable to the equivalent HTML table.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| dataTable | *System.Data.DataTable*<br>DataTable to convert. |
+
+#### Parameters
+
+| tableCssClasses | *ADN.Extensions.DataTableExtensions.TableCssClasses*<br>Optional parameter. CSS classes. |
+
+
+#### Returns
 
 HTML table.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| dataTable | [System.Data.DataTable](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.DataTable 'System.Data.DataTable') | DataTable to convert. |
-| tableCssClasses | [ADN.Extensions.DataTableExtensions.TableCssClasses](#T-ADN-Extensions-DataTableExtensions-TableCssClasses 'ADN.Extensions.DataTableExtensions.TableCssClasses') | Optional parameter. CSS classes. |
-
-##### Example
+#### Example
 
 ```csharp
 DataTable table = new DataTable(new DataTableExtensions.TableCssClasses()
 {
-    Table = "class-table",
-    Tr = "class-tr-1 class-tr-2",
-    Th = "class-th",
-    Td = "class-td",
+Table = "class-table",
+Tr = "class-tr-1 class-tr-2",
+Th = "class-th",
+Td = "class-td",
 });
 // populate table
-var result = table.ToHtmlTable(); 
+var result = table.ToHtmlTable();
 ```
 
-<a name='T-ADN-Extensions-DateTimeExtensions'></a>
-## DateTimeExtensions `type`
+<a name='T:ADN.Extensions.DateTimeExtensions'></a>
 
-##### Namespace
 
-ADN.Extensions
+## DateTimeExtensions
 
-##### Summary
+A static class of extension methods for .
 
-A static class of extension methods for [DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime').
+<a name='DateTimeExtensions.DateTimeToUnixTimeStamp(dateTime)'></a>
 
-<a name='M-ADN-Extensions-DateTimeExtensions-DateTimeToUnixTimeStamp-System-DateTime-'></a>
-### DateTimeToUnixTimeStamp(dateTime) `method`
 
-##### Summary
+### DateTimeToUnixTimeStamp(dateTime)
 
 Converts DateTime to unix time stamp.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| dateTime | *System.DateTime*<br>The DateTime. |
+
+
+#### Returns
 
 The unix time stamp.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| dateTime | [System.DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime') | The DateTime. |
-
-##### Example
+#### Example
 
 ```csharp
 var dateTime = DateTime.Parse("02/16/2008 12:15:12", new CultureInfo("en-US"));
 var result = date.DateTimeToUnixTimeStamp();
+
 /*
 result is 1203164112
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-DateTimeExtensions-TrimMilliseconds-System-DateTime-'></a>
-### TrimMilliseconds(dateTime) `method`
+<a name='DateTimeExtensions.TrimMilliseconds(dateTime)'></a>
 
-##### Summary
+
+### TrimMilliseconds(dateTime)
 
 Returns the DateTime with the milliseconds trimmed.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| dateTime | *System.DateTime*<br>The DateTime. |
+
+
+#### Returns
 
 A DateTime with the milliseconds trimmed.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| dateTime | [System.DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime') | The DateTime. |
-
-##### Example
+#### Example
 
 ```csharp
-var dateTime = DateTime.Now.TrimMilliseconds(); 
+var dateTime = DateTime.Now.TrimMilliseconds();
 ```
 
-<a name='M-ADN-Extensions-DateTimeExtensions-TrimSecondsAndMilliseconds-System-DateTime-'></a>
-### TrimSecondsAndMilliseconds(dateTime) `method`
+<a name='DateTimeExtensions.TrimSecondsAndMilliseconds(dateTime)'></a>
 
-##### Summary
+
+### TrimSecondsAndMilliseconds(dateTime)
 
 Returns a Datetime with the seconds trimmed.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| dateTime | *System.DateTime*<br>The DateTime. |
+
+
+#### Returns
 
 A DateTime with the seconds trimmed.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| dateTime | [System.DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime') | The DateTime. |
-
-##### Example
+#### Example
 
 ```csharp
-var dateTime = DateTime.Now.TrimSecondsAndMilliseconds(); 
+var dateTime = DateTime.Now.TrimSecondsAndMilliseconds();
 ```
 
-<a name='M-ADN-Extensions-DateTimeExtensions-TrimTicks-System-DateTime-'></a>
-### TrimTicks(dateTime) `method`
+<a name='DateTimeExtensions.TrimTicks(dateTime)'></a>
 
-##### Summary
+
+### TrimTicks(dateTime)
 
 Returns the DateTime with the ticks trimmed.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| dateTime | *System.DateTime*<br>The DateTime. |
+
+
+#### Returns
 
 A DateTime with the ticks trimmed.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| dateTime | [System.DateTime](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.DateTime 'System.DateTime') | The DateTime. |
-
-##### Example
+#### Example
 
 ```csharp
-var dateTime = DateTime.Now.TrimTicks(); 
+var dateTime = DateTime.Now.TrimTicks();
 ```
 
-<a name='M-ADN-Extensions-DateTimeExtensions-UnixTimeStampToDateTime-System-Int64-'></a>
-### UnixTimeStampToDateTime(unixTimestamp) `method`
+<a name='DateTimeExtensions.UnixTimeStampToDateTime(unixTimestamp)'></a>
 
-##### Summary
+
+### UnixTimeStampToDateTime(unixTimestamp)
 
 Converts unix time stamp to DateTime.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| unixTimestamp | *System.Int64*<br>The unix time stamp. |
+
+
+#### Returns
 
 The DateTime.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| unixTimestamp | [System.Int64](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int64 'System.Int64') | The unix time stamp. |
-
-##### Example
+#### Example
 
 ```csharp
 long unixTimestamp = 1203164112;
 var result = unixTimestamp.UnixTimeStampToDateTime().ToString("MM/dd/yyyy HH:mm:ss");
+
 /*
 result is 02/16/2008 12:15:12
-*/ 
+*/
 ```
 
-<a name='T-ADN-Extensions-DictionaryExtensions'></a>
-## DictionaryExtensions `type`
+<a name='T:ADN.Extensions.DictionaryExtensions'></a>
 
-##### Namespace
 
-ADN.Extensions
+## DictionaryExtensions
 
-##### Summary
+A static class of extension methods for .
 
-A static class of extension methods for [IDictionary](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.IDictionary 'System.Collections.IDictionary').
+<a name='DictionaryExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,`<T>},System.Func{`<T>,System.Boolean})'></a>
 
-<a name='M-ADN-Extensions-DictionaryExtensions-RemoveAll``2-System-Collections-Generic-IDictionary{``0,``1},System-Func{``1,System-Boolean}-'></a>
-### RemoveAll\`\`2(dict,predicate) `method`
 
-##### Summary
+### RemoveAll``2(System.Collections.Generic.IDictionary{``0,`<T>},System.Func{`<T>,System.Boolean})
 
 Remove all elements in the dictionary that match the predicate.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| dict | [System.Collections.Generic.IDictionary{\`\`0,\`\`1}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IDictionary 'System.Collections.Generic.IDictionary{``0,``1}') | The dictionary to modify. |
-| predicate | [System.Func{\`\`1,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{``1,System.Boolean}') | The predicate to make the match. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| TKey | Dictionary key. |
-| TValue | Dictionary value. |
+| dict | *Unknown type*<br>The dictionary to modify. |
 
-##### Example
+#### Parameters
 
-```csharp
-<![CDATA[var dictionary = new Dictionary<string, int>]]> 
+| predicate | *Unknown type*<br>The predicate to make the match. |
+
+
+#### Example
+
+```csharpvar dictionary = new Dictionary<string, int>
+{
+{ "Luke", 1 },
+{ "Skywalker", 2 }
+};
+dictionary.RemoveAll(value => value == 2);
+
+/*
+dictionary contains the values [ {"Luke", 1} ]
+*/
 ```
 
-<a name='T-ADN-Extensions-IntegerExtensions'></a>
-## IntegerExtensions `type`
+<a name='T:ADN.Extensions.IntegerExtensions'></a>
 
-##### Namespace
 
-ADN.Extensions
+## IntegerExtensions
 
-##### Summary
+A static class of extension methods for .
 
-A static class of extension methods for [Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32').
+<a name='IntegerExtensions.RoundNumber(value,step)'></a>
 
-<a name='M-ADN-Extensions-IntegerExtensions-RoundNumber-System-Double,System-Int32-'></a>
-### RoundNumber(value,step) `method`
 
-##### Summary
+### RoundNumber(value, step)
 
 Rounds a value to the nearest integer with the given step.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| value | *System.Double*<br>A double-precision floating-point number to be rounded. |
+
+#### Parameters
+
+| step | *System.Int32*<br>Step number to round. |
+
+
+#### Returns
 
 The number nearest to value that is multiple of the given step.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| value | [System.Double](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Double 'System.Double') | A double-precision floating-point number to be rounded. |
-| step | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Step number to round. |
-
-##### Example
+#### Example
 
 ```csharp
 double value = 12;
 int step = 5;
 var result = value.RoundNumber(step);
+
 /*
 result is 10
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-IntegerExtensions-RoundNumber-System-Double,System-Int32,System-Int32,System-Int32-'></a>
-### RoundNumber(value,step,min,max) `method`
+<a name='IntegerExtensions.RoundNumber(value,step,min,max)'></a>
 
-##### Summary
+
+### RoundNumber(value, step, min, max)
 
 Rounds a value to the nearest integer with the given step and within the determined range.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| value | *System.Double*<br>A double-precision floating-point number to be rounded. |
+
+#### Parameters
+
+| step | *System.Int32*<br>Step number to round. |
+
+#### Parameters
+
+| min | *System.Int32*<br>Minimum value. |
+
+#### Parameters
+
+| max | *System.Int32*<br>Maximum value. |
+
+
+#### Returns
 
 The number nearest to value that is multiple of the given step and within the determined range.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| value | [System.Double](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Double 'System.Double') | A double-precision floating-point number to be rounded. |
-| step | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Step number to round. |
-| min | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Minimum value. |
-| max | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Maximum value. |
-
-##### Example
+#### Example
 
 ```csharp
 double value = 12;
@@ -809,705 +928,795 @@ int step = 5;
 int min = 0;
 int max = 20;
 var result = value.RoundNumber(step, min, max);
+
 /*
 result is 10
-*/ 
+*/
 ```
 
-<a name='T-ADN-Extensions-ListExtensions'></a>
-## ListExtensions `type`
+<a name='T:ADN.Extensions.ListExtensions'></a>
 
-##### Namespace
 
-ADN.Extensions
+## ListExtensions
 
-##### Summary
+A static class of extension methods for .
 
-A static class of extension methods for [List\`1](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List`1 'System.Collections.Generic.List`1').
+<a name='ListExtensions.IndexOfMax`<T>(values)'></a>
 
-<a name='M-ADN-Extensions-ListExtensions-IndexOfMax``1-System-Collections-Generic-IList{``0}-'></a>
-### IndexOfMax\`\`1(values) `method`
 
-##### Summary
+### IndexOfMax`<T>(values)
 
 Find the index of the maximum value of the list.
 
-##### Returns
 
-Index of the maximum value of the list.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.IList{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IList 'System.Collections.Generic.IList{``0}') | The list of elements. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| T | The type of the elements of the list. |
+| values | *System.Collections.Generic.IList{``0}*<br>The list of elements. |
 
-##### Example
+
+#### Returns
+
+Index of the maximum value of the list.
+
+
+#### Example
 
 ```csharp
 var values = new double[] { 10, 11, 12, 13, 12, 11, 10 };
 var result = values.IndexOfMax();
+
 /*
 result is 3
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ListExtensions-IndexOfMin``1-System-Collections-Generic-IList{``0}-'></a>
-### IndexOfMin\`\`1(values) `method`
+<a name='ListExtensions.IndexOfMin`<T>(values)'></a>
 
-##### Summary
+
+### IndexOfMin`<T>(values)
 
 Find the index of the minimum value of the list.
 
-##### Returns
 
-Index of the minimum value of the list.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.IList{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IList 'System.Collections.Generic.IList{``0}') | The list of elements. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| T | The type of the elements of the list. |
+| values | *System.Collections.Generic.IList{``0}*<br>The list of elements. |
 
-##### Example
+
+#### Returns
+
+Index of the minimum value of the list.
+
+
+#### Example
 
 ```csharp
 var values = new double[] { 13, 12, 11, 10, 11, 12, 13 };
 var result = values.IndexOfMin();
+
 /*
 result is 3
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ListExtensions-IsSame``1-System-Collections-Generic-IList{``0},System-Collections-Generic-IList{``0}-'></a>
-### IsSame\`\`1(first,second) `method`
+<a name='ListExtensions.IsSame`<T>(first,second)'></a>
 
-##### Summary
+
+### IsSame`<T>(first, second)
 
 Determine if two sequences contains exactly the same elements.
 
-##### Returns
 
-True if two sequences contains exactly the same elements, false otherwise.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| first | [System.Collections.Generic.IList{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IList 'System.Collections.Generic.IList{``0}') | The first list of elements. |
-| second | [System.Collections.Generic.IList{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IList 'System.Collections.Generic.IList{``0}') | The second list of elements. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| T | The type of the elements of the list. |
+| first | *System.Collections.Generic.IList{``0}*<br>The first list of elements. |
 
-##### Example
+#### Parameters
+
+| second | *System.Collections.Generic.IList{``0}*<br>The second list of elements. |
+
+
+#### Returns
+
+True if two sequences contains exactly the same elements, false otherwise.
+
+
+#### Example
 
 ```csharp
 var first = new double[] { 0, 1 };
 var second = new double[] { 1, 0 };
 var result = first.IsSame(second);
+
 /*
 result is true
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double}-'></a>
-### Mean(values) `method`
+<a name='ListExtensions.Mean(values)'></a>
 
-##### Summary
+
+### Mean(values)
 
 Gets the mean of the values of the list.
 
-##### Returns
 
-Mean of the values.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
-
-##### Example
-
-```csharp
-<![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]> 
-```
-
-<a name='M-ADN-Extensions-ListExtensions-Mean-System-Collections-Generic-List{System-Double},System-Int32,System-Int32-'></a>
-### Mean(values,start,end) `method`
-
-##### Summary
-
-Gets the mean of the values of the list of a given range.
-
-##### Returns
-
-Mean of the values.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
-| start | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Start index. |
-| end | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | End index. |
-
-##### Exceptions
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| [System.ArgumentOutOfRangeException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentOutOfRangeException 'System.ArgumentOutOfRangeException') | Start or end out of range. |
+| values | *System.Collections.Generic.List{System.Double}*<br>The list of elements. |
 
-##### Example
+
+#### Returns
+
+Mean of the values.
+
+
+#### Example
+
+```csharpvar values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+var result = values.Mean();
+
+/*
+result is 4.5
+*/
+```
+
+<a name='ListExtensions.Mean(values,start,end)'></a>
+
+
+### Mean(values, start, end)
+
+Gets the mean of the values of the list of a given range.
+
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| values | *System.Collections.Generic.List{System.Double}*<br>The list of elements. |
+
+#### Parameters
+
+| start | *System.Int32*<br>Start index. |
+
+#### Parameters
+
+| end | *System.Int32*<br>End index. |
+
+
+#### Returns
+
+Mean of the values.
+
+*System.ArgumentOutOfRangeException:* Start or end out of range.
+
+
+#### Example
 
 ```csharp
 int start = 0;
-int end = 5; 
+int end = 5;
+var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+var result = values.Mean(start, end);
+
+/*
+result is 2.5
+*/
 ```
 
-<a name='M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-List{System-Double}-'></a>
-### Median(values) `method`
+<a name='ListExtensions.Median(values)'></a>
 
-##### Summary
+
+### Median(values)
 
 Gets the value of the middle element of the list after sorted.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| values | *System.Collections.Generic.List{System.Double}*<br>The list of elements. |
+
+
+#### Returns
 
 Index of the middle element.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
-
-##### Example
+#### Example
 
 ```csharp
 var values = new double[] { 2, 3, 5, 1, 4 };
 var result = values.Median();
+
 /*
 result is 3
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ListExtensions-Median-System-Collections-Generic-List{System-Double},System-Int32,System-Int32-'></a>
-### Median(values,start,end) `method`
+<a name='ListExtensions.Median(values,start,end)'></a>
 
-##### Summary
+
+### Median(values, start, end)
 
 Gets the value of the middle element of the list after sorted of a given range.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| values | *System.Collections.Generic.List{System.Double}*<br>The list of elements. |
+
+#### Parameters
+
+| start | *System.Int32*<br>Start index. |
+
+#### Parameters
+
+| end | *System.Int32*<br>End index. |
+
+
+#### Returns
 
 Index of the middle element.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
-| start | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Start index. |
-| end | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | End index. |
-
-##### Example
+#### Example
 
 ```csharp
 int start = 0;
 int end = 2;
 var values = new double[] { 2, 3, 5, 1, 4 };
 var result = values.Median();
+
 /*
 result is 2
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-ListExtensions-Shuffle``1-System-Collections-Generic-IList{``0}-'></a>
-### Shuffle\`\`1(values) `method`
+<a name='ListExtensions.Shuffle`<T>(values)'></a>
 
-##### Summary
+
+### Shuffle`<T>(values)
 
 Shuffle the elements of the list.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.IList{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IList 'System.Collections.Generic.IList{``0}') | The list of elements. |
-
-##### Generic Types
+#### Parameters
 
 | Name | Description |
 | ---- | ----------- |
-| T | The type of the elements of the list. |
+| values | *System.Collections.Generic.IList{``0}*<br>The list of elements. |
 
-##### Example
+
+#### Example
 
 ```csharp
 var values = new double[] { 0, 1, 2, 3, 4, 5 };
-values.Shuffle(); 
+values.Shuffle();
 ```
 
-<a name='M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double}-'></a>
-### StandardDeviation(values) `method`
+<a name='ListExtensions.StandardDeviation(values)'></a>
 
-##### Summary
+
+### StandardDeviation(values)
 
 Calculate the standard deviation of the values of the list.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| values | *System.Collections.Generic.List{System.Double}*<br>The list of elements. |
+
+
+#### Returns
 
 Standard deviation.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
+#### Example
 
-##### Example
-
-```csharp
-<![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]> 
+```csharpvar values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+var result = values.StandardDeviation();
 ```
 
-<a name='M-ADN-Extensions-ListExtensions-StandardDeviation-System-Collections-Generic-List{System-Double},System-Int32,System-Int32-'></a>
-### StandardDeviation(values,start,end) `method`
+<a name='ListExtensions.StandardDeviation(values,start,end)'></a>
 
-##### Summary
+
+### StandardDeviation(values, start, end)
 
 Calculate the standard deviation of the values of the list of a given range.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| values | *System.Collections.Generic.List{System.Double}*<br>The list of elements. |
+
+#### Parameters
+
+| start | *System.Int32*<br>Start index. |
+
+#### Parameters
+
+| end | *System.Int32*<br>End index. |
+
+
+#### Returns
 
 Standard deviation.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
-| start | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Start index. |
-| end | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | End index. |
-
-##### Example
-
-```csharp
-int start = 0;
-int end = 5; 
-```
-
-<a name='M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double}-'></a>
-### Variance(values) `method`
-
-##### Summary
-
-Calculate the variance of the values of the list.
-
-##### Returns
-
-Variance of values.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
-
-##### Example
-
-```csharp
-<![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]> 
-```
-
-<a name='M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double-'></a>
-### Variance(values,mean) `method`
-
-##### Summary
-
-Calculate the variance of the values of the list.
-
-##### Returns
-
-Variance of values.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
-| mean | [System.Double](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Double 'System.Double') | The mean of the values of the list. |
-
-##### Example
-
-```csharp
-double mean = 2.5; 
-```
-
-<a name='M-ADN-Extensions-ListExtensions-Variance-System-Collections-Generic-List{System-Double},System-Double,System-Int32,System-Int32-'></a>
-### Variance(values,mean,start,end) `method`
-
-##### Summary
-
-Calculate the variance of the values of the list of a given range.
-
-##### Returns
-
-Variance of values.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| values | [System.Collections.Generic.List{System.Double}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Double}') | The list of elements. |
-| mean | [System.Double](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Double 'System.Double') | The mean of the values of the list. |
-| start | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Start index. |
-| end | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | End index. |
-
-##### Example
+#### Example
 
 ```csharp
 int start = 0;
 int end = 5;
-double mean = 2.5; 
+var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+var result = values.StandardDeviation(start, end);
 ```
 
-<a name='T-ADN-Extensions-NumberExtensions'></a>
-## NumberExtensions `type`
+<a name='ListExtensions.Variance(values)'></a>
 
-##### Namespace
 
-ADN.Extensions
+### Variance(values)
 
-##### Summary
+Calculate the variance of the values of the list.
+
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| values | *System.Collections.Generic.List{System.Double}*<br>The list of elements. |
+
+
+#### Returns
+
+Variance of values.
+
+
+#### Example
+
+```csharpvar values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+var result = values.Variance();
+```
+
+<a name='ListExtensions.Variance(values,mean)'></a>
+
+
+### Variance(values, mean)
+
+Calculate the variance of the values of the list.
+
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| values | *System.Collections.Generic.List{System.Double}*<br>The list of elements. |
+
+#### Parameters
+
+| mean | *System.Double*<br>The mean of the values of the list. |
+
+
+#### Returns
+
+Variance of values.
+
+
+#### Example
+
+```csharp
+double mean = 2.5;
+var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+var result = values.Variance(mean);
+```
+
+<a name='ListExtensions.Variance(values,mean,start,end)'></a>
+
+
+### Variance(values, mean, start, end)
+
+Calculate the variance of the values of the list of a given range.
+
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| values | *System.Collections.Generic.List{System.Double}*<br>The list of elements. |
+
+#### Parameters
+
+| mean | *System.Double*<br>The mean of the values of the list. |
+
+#### Parameters
+
+| start | *System.Int32*<br>Start index. |
+
+#### Parameters
+
+| end | *System.Int32*<br>End index. |
+
+
+#### Returns
+
+Variance of values.
+
+
+#### Example
+
+```csharp
+int start = 0;
+int end = 5;
+double mean = 2.5;
+var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+var result = values.Variance(mean, start, end);
+```
+
+<a name='T:ADN.Extensions.NumberExtensions'></a>
+
+
+## NumberExtensions
 
 A static class of extension methods for numbers.
 
-<a name='M-ADN-Extensions-NumberExtensions-IsNumber-System-Object-'></a>
-### IsNumber(value) `method`
+<a name='NumberExtensions.IsNumber(value)'></a>
 
-##### Summary
+
+### IsNumber(value)
 
 Checks if an object is a number type.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| value | *System.Object*<br> |
+
+
+#### Returns
 
 True if the object is a number type.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| value | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
-
-##### Example
+#### Example
 
 ```csharp
 double value = 42;
 var result = value.IsNumber();
+
 /*
 result is True
-*/ 
+*/
 ```
 
-<a name='T-ADN-Extensions-ObjectExtensions'></a>
-## ObjectExtensions `type`
+<a name='T:ADN.Extensions.ObjectExtensions'></a>
 
-##### Namespace
 
-ADN.Extensions
+## ObjectExtensions
 
-##### Summary
+A static class of extension methods for .
 
-A static class of extension methods for [Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object').
+<a name='ObjectExtensions.DeepClone`<T>(source)'></a>
 
-<a name='M-ADN-Extensions-ObjectExtensions-DeepClone``1-``0-'></a>
-### DeepClone\`\`1(source) `method`
 
-##### Summary
+### DeepClone`<T>(source)
 
 Clone a serializable object.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| source | *``0*<br>Object to clone. |
+
+
+#### Returns
 
 A clone of the object.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| source | [\`\`0](#T-``0 '``0') | Object to clone. |
-
-##### Example
+#### Example
 
 ```csharp
 var person1 = new Person()
 {
-    FirstName = "Luke",
-    LastName = "Skywalwer"
+FirstName = "Luke",
+LastName = "Skywalwer"
 };
-var person2 = person1.DeepClone(); 
+var person2 = person1.DeepClone();
 ```
 
-<a name='T-ADN-Extensions-StringExtensions'></a>
-## StringExtensions `type`
+<a name='T:ADN.Extensions.StringExtensions'></a>
 
-##### Namespace
 
-ADN.Extensions
+## StringExtensions
 
-##### Summary
+A static class of extension methods for .
 
-A static class of extension methods for [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String').
+<a name='StringExtensions.FromHex(str)'></a>
 
-<a name='M-ADN-Extensions-StringExtensions-FromHex-System-String-'></a>
-### FromHex(str) `method`
 
-##### Summary
+### FromHex(str)
 
 Converts a hexadecimal string to unicode string.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| str | *System.String*<br>Hexadecimal string. |
+
+
+#### Returns
 
 Unicode string.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Hexadecimal string. |
-
-##### Example
+#### Example
 
 ```csharp
 var value = "4C6F72656D20497073756D";
 var result = value.FromHex();
+
 /*
 result is "Lorem Ipsum"
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-StringExtensions-IsAlphaNumeric-System-String-'></a>
-### IsAlphaNumeric(str) `method`
+<a name='StringExtensions.IsAlphaNumeric(str)'></a>
 
-##### Summary
+
+### IsAlphaNumeric(str)
 
 Check if a string is alphanumeric.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| str | *System.String*<br>String to check. |
+
+
+#### Returns
 
 True if the string is alphanumeric, false otherwise.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String to check. |
-
-##### Example
+#### Example
 
 ```csharp
 var value = "abc1234";
 var result = value.IsAlphaNumeric();
+
 /*
 result is true
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-StringExtensions-IsValidEmailAddress-System-String-'></a>
-### IsValidEmailAddress(str) `method`
+<a name='StringExtensions.IsValidEmailAddress(str)'></a>
 
-##### Summary
+
+### IsValidEmailAddress(str)
 
 Check if a string is a valid email.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| str | *System.String*<br>String to check. |
+
+
+#### Returns
 
 True if the string is a valid email, false otherwise.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String to check. |
-
-##### Example
+#### Example
 
 ```csharp
 var value = "austin.powers@example.com";
 var result = value.IsValidEmailAddress();
+
 /*
 result is true
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-StringExtensions-Left-System-String,System-Int32-'></a>
-### Left(str,length) `method`
+<a name='StringExtensions.Left(str,length)'></a>
 
-##### Summary
 
-Returns a string containing a specified number of characters from the left side of a string.
-
-##### Returns
+### Left(str, length)
 
 Returns a string containing a specified number of characters from the left side of a string.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String expression from which the leftmost characters are returned. |
-| length | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Numeric expression indicating how many characters to return. |
+#### Parameters
 
-##### Example
+| Name | Description |
+| ---- | ----------- |
+| str | *System.String*<br>String expression from which the leftmost characters are returned. |
+
+#### Parameters
+
+| length | *System.Int32*<br>Numeric expression indicating how many characters to return. |
+
+
+#### Returns
+
+Returns a string containing a specified number of characters from the left side of a string.
+
+
+#### Example
 
 ```csharp
 var value = "abcdefghij";
 var length = 5;
 var result = value.Left(length);
+
 /*
 result is "abcde"
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-StringExtensions-Mid-System-String,System-Int32,System-Int32-'></a>
-### Mid(str,startIndex,length) `method`
+<a name='StringExtensions.Mid(str,startIndex,length)'></a>
 
-##### Summary
+
+### Mid(str, startIndex, length)
 
 Returns a string that contains a specified number of characters starting from a specified position in a string.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| str | *System.String*<br>String expression from which characters are returned. |
+
+#### Parameters
+
+| startIndex | *System.Int32*<br>Starting position of the characters to return. |
+
+#### Parameters
+
+| length | *System.Int32*<br>Number of characters to return. |
+
+
+#### Returns
 
 A string that consists of the specified number of characters starting from the specified position in the string.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String expression from which characters are returned. |
-| startIndex | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Starting position of the characters to return. |
-| length | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of characters to return. |
-
-##### Example
+#### Example
 
 ```csharp
 var value = "abcdefghij";
 var startIndex = 3;
 var length = 5;
 var result = value.Mid(startIndex, length);
+
 /*
 result is "defgh"
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-StringExtensions-Right-System-String,System-Int32-'></a>
-### Right(str,length) `method`
+<a name='StringExtensions.Right(str,length)'></a>
 
-##### Summary
 
-Returns a string containing a specified number of characters from the right side of a string.
-
-##### Returns
+### Right(str, length)
 
 Returns a string containing a specified number of characters from the right side of a string.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String expression from which the rightmost characters are returned. |
-| length | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Numeric expression indicating how many characters to return. |
+#### Parameters
 
-##### Example
+| Name | Description |
+| ---- | ----------- |
+| str | *System.String*<br>String expression from which the rightmost characters are returned. |
+
+#### Parameters
+
+| length | *System.Int32*<br>Numeric expression indicating how many characters to return. |
+
+
+#### Returns
+
+Returns a string containing a specified number of characters from the right side of a string.
+
+
+#### Example
 
 ```csharp
 var value = "abcdefghij";
 var length = 5;
 var result = value.Right(length);
+
 /*
 result is "fghij"
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-StringExtensions-ToHex-System-String-'></a>
-### ToHex(str) `method`
+<a name='StringExtensions.ToHex(str)'></a>
 
-##### Summary
+
+### ToHex(str)
 
 Converts a unicode string to hexadecimal string.
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| str | *System.String*<br>Unicode string. |
+
+
+#### Returns
 
 Hexadecimal string.
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Unicode string. |
-
-##### Example
+#### Example
 
 ```csharp
 var value = "Lorem Ipsum";
 var result = value.ToHex();
+
 /*
 result is "4C6F72656D20497073756D"
-*/ 
+*/
 ```
 
-<a name='M-ADN-Extensions-StringExtensions-TrimNonPrintableAscii-System-String-'></a>
-### TrimNonPrintableAscii(str) `method`
+<a name='StringExtensions.TrimNonPrintableAscii(str)'></a>
 
-##### Summary
+
+### TrimNonPrintableAscii(str)
 
 Returns a string without the non-printable ASCII characters from a string (characters between space and tilde).
 
-##### Returns
+
+#### Parameters
+
+| Name | Description |
+| ---- | ----------- |
+| str | *System.String*<br>String to remove the non-printable ASCII characters. |
+
+
+#### Returns
 
 A string without the non-printable ASCII characters from a string (characters between space and tilde).
 
-##### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| str | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | String to remove the non-printable ASCII characters. |
-
-##### Example
+#### Example
 
 ```csharp
 var str = (char)0x12 + " a~";
 var result = str.TrimNonPrintableAscii();
+
 /*
 result is " a~"
-*/ 
+*/
 ```
 
-<a name='T-ADN-Extensions-DataTableExtensions-TableCssClasses'></a>
-## TableCssClasses `type`
-
-##### Namespace
-
-ADN.Extensions.DataTableExtensions
-
-##### Summary
-
-CSS classes.
