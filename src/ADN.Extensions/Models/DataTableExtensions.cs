@@ -22,6 +22,54 @@ namespace ADN.Extensions
         }
 
         /// <summary>
+        /// Convert a DataTable to a formatted string table.
+        /// </summary>
+        /// <param name="dataTable">DataTable to convert.</param>
+        /// <returns>String DataTable.</returns>
+        public static string Print(this DataTable dataTable)
+        {
+            var sb = new StringBuilder();
+            var columnsWidths = new int[dataTable.Columns.Count];
+
+            // get column widths
+            foreach (DataRow row in dataTable.Rows)
+            {
+                for (int i = 0; i < dataTable.Columns.Count; i++)
+                {
+                    var length = row[i].ToString().Length;
+                    columnsWidths[i] = columnsWidths[i] < length ? length : columnsWidths[i];
+                }
+            }
+
+            // get column titles
+            for (int i = 0; i < dataTable.Columns.Count; i++)
+            {
+                var length = dataTable.Columns[i].ColumnName.Length;
+                columnsWidths[i] = columnsWidths[i] < length ? length : columnsWidths[i];
+            }
+
+            // write column titles
+            for (int i = 0; i < dataTable.Columns.Count; i++)
+            {
+                var text = dataTable.Columns[i].ColumnName;
+                sb.Append("|" + text.PadCenter(columnsWidths[i] + 2));
+            }
+            sb.Append("|\n" + new string('=', sb.Length) + "\n");
+
+            // write rows
+            foreach (DataRow row in dataTable.Rows)
+            {
+                for (int i = 0; i < dataTable.Columns.Count; i++)
+                {
+                    var text = row[i].ToString();
+                    sb.Append("|" + text.PadCenter(columnsWidths[i] + 2));
+                }
+                sb.Append("|\n");
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
         /// Convert a DataTable to the equivalent HTML table.
         /// </summary>
         /// <param name="dataTable">DataTable to convert.</param>

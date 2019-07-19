@@ -132,6 +132,17 @@ namespace ADN.Extensions
         /// <param name="str">String to pad center.</param>
         /// <param name="maxLength">Maximum length of space to fill.</param>
         /// <returns>Pad center string.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var value = "abc";
+        /// var maxLength = 5;
+        /// var result = value.PacCenter(maxLength);
+        /// 
+        /// /*
+        /// result is " abc "
+        /// */
+        /// </code>
+        /// </example>
         public static string PadCenter(this string str, int maxLength)
         {
             int diff = maxLength - str.Length;
