@@ -127,6 +127,29 @@ namespace ADN.Extensions
         }
 
         /// <summary>
+        /// Returns a padding center string.
+        /// </summary>
+        /// <param name="str">String to pad center.</param>
+        /// <param name="maxLength">Maximum length of space to fill.</param>
+        /// <returns>Pad center string.</returns>
+        public static string PadCenter(this string str, int maxLength)
+        {
+            int diff = maxLength - str.Length;
+
+            if (diff < 0)
+            {
+                return str;
+            }
+
+            var sb = new StringBuilder();
+            sb.Append(new string(' ', diff / 2));
+            sb.Append(str);
+            sb.Append(new string(' ', (int)(diff / 2.0 + 0.5)));
+
+            return sb.ToString();
+        }
+
+        /// <summary>
         /// Returns a string without the non-printable ASCII characters from a string (characters between space and tilde).
         /// </summary>
         /// <param name="str">String to remove the non-printable ASCII characters.</param>

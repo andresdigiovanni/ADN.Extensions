@@ -821,6 +821,14 @@
             </code>
             </example>
         </member>
+        <member name="M:ADN.Extensions.StringExtensions.PadCenter(System.String,System.Int32)">
+            <summary>
+            Returns a padding center string.
+            </summary>
+            <param name="str">String to pad center.</param>
+            <param name="maxLength">Maximum length of space to fill.</param>
+            <returns>Pad center string.</returns>
+        </member>
         <member name="M:ADN.Extensions.StringExtensions.TrimNonPrintableAscii(System.String)">
             <summary>
             Returns a string without the non-printable ASCII characters from a string (characters between space and tilde).

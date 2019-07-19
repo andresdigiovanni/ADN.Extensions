@@ -89,6 +89,21 @@ namespace ADN.Extensions.Tests
         }
 
         [Theory]
+        [InlineData("abc", 0, "abc")]
+        [InlineData("abc", 1, "abc")]
+        [InlineData("abc", 2, "abc")]
+        [InlineData("abc", 3, "abc")]
+        [InlineData("abc", 4, "abc ")]
+        [InlineData("abc", 5, " abc ")]
+        [InlineData("abc", 6, " abc  ")]
+        [InlineData("abc", 7, "  abc  ")]
+        public void PadCenter(string value, int maxLength, string expected)
+        {
+            var result = value.PadCenter(maxLength);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
         [ClassData(typeof(TrimNonPrintableAsciiData))]
         public void TrimNonPrintableAscii(string value, string expected)
         {
