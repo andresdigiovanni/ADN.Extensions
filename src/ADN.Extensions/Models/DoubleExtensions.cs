@@ -3,12 +3,12 @@
 namespace ADN.Extensions
 {
     /// <summary>
-    /// A static class of extension methods for <see cref="int"/>.
+    /// A static class of extension methods for <see cref="System.Double"/>.
     /// </summary>
-    public static class IntegerExtensions
+    public static class DoubleExtensions
     {
         /// <summary>
-        /// Rounds a value to the nearest integer with the given step.
+        /// Rounds a value to the nearest integral value with the given step.
         /// </summary>
         /// <param name="value">A double-precision floating-point number to be rounded.</param>
         /// <param name="step">Step number to round.</param>
@@ -24,13 +24,13 @@ namespace ADN.Extensions
         /// */
         /// </code>
         /// </example>
-        public static int RoundNumber(this double value, int step)
+        public static double RoundNumber(this double value, double step)
         {
-            return Convert.ToInt32(Math.Round(value / step) * step);
+            return Math.Round(value / step) * step;
         }
 
         /// <summary>
-        /// Rounds a value to the nearest integer with the given step and within the determined range.
+        /// Rounds a value to the nearest integral value with the given step and within the determined range.
         /// </summary>
         /// <param name="value">A double-precision floating-point number to be rounded.</param>
         /// <param name="step">Step number to round.</param>
@@ -50,13 +50,13 @@ namespace ADN.Extensions
         /// */
         /// </code>
         /// </example>
-        public static int RoundNumber(this double value, int step, int min, int max)
+        public static double RoundNumber(this double value, double step, double min, double max)
         {
             value = RoundNumber(value, step);
 
             if (value < min) return min;
             if (value > max) return max;
-            return Convert.ToInt32(value);
+            return value;
         }
     }
 }

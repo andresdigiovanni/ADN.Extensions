@@ -8,7 +8,7 @@ using Xunit;
 
 namespace ADN.Extensions.Tests
 {
-    public class IntegerExtensionsTest
+    public class DoubleExtensionsTest
     {
         [Theory]
         [InlineData(10, 2, 10)]
@@ -27,7 +27,13 @@ namespace ADN.Extensions.Tests
         [InlineData(-14, 5, -15)]
         [InlineData(-15, 5, -15)]
         [InlineData(0, 5, 0)]
-        public void RoundNumber_Valid(double value, int step, int expected)
+        [InlineData(1.0, 0.5, 1.0)]
+        [InlineData(1.1, 0.5, 1.0)]
+        [InlineData(1.2, 0.5, 1.0)]
+        [InlineData(1.3, 0.5, 1.5)]
+        [InlineData(1.4, 0.5, 1.5)]
+        [InlineData(1.5, 0.5, 1.5)]
+        public void RoundNumber_Valid(double value, double step, double expected)
         {
             var result = value.RoundNumber(step);
 
@@ -47,7 +53,7 @@ namespace ADN.Extensions.Tests
         [InlineData(11, 2, 12, 20, 12)]
         [InlineData(12, 2, 8, 20, 12)]
         [InlineData(12, 2, 12, 20, 12)]
-        public void RoundNumber_WithStep_Valid(double value, int step, int min, int max, int expected)
+        public void RoundNumber_WithStep_Valid(double value, double step, double min, double max, double expected)
         {
             var result = value.RoundNumber(step, min, max);
 

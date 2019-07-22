@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added methods to DataTableExtensions and StringExtensions.
 
+### Changed
+- Changed IntegerExtensions to DoubleExtensions.
+
 ## [1.2.0] - 2019-07-03
 ### Added
 - Added methods to DateTimeExtensions, ListExtensions and StringExtensions.

@@ -280,6 +280,13 @@
             CSS classes.
             </summary>
         </member>
+        <member name="M:ADN.Extensions.DataTableExtensions.Print(System.Data.DataTable)">
+            <summary>
+            Convert a DataTable to a formatted string table.
+            </summary>
+            <param name="dataTable">DataTable to convert.</param>
+            <returns>String DataTable.</returns>
+        </member>
         <member name="M:ADN.Extensions.DataTableExtensions.ToHtmlTable(System.Data.DataTable,ADN.Extensions.DataTableExtensions.TableCssClasses)">
             <summary>
             Convert a DataTable to the equivalent HTML table.
@@ -404,14 +411,14 @@
             </code>
             </example>
         </member>
-        <member name="T:ADN.Extensions.IntegerExtensions">
+        <member name="T:ADN.Extensions.DoubleExtensions">
             <summary>
-            A static class of extension methods for <see cref="T:System.Int32"/>.
+            A static class of extension methods for <see cref="T:System.Double"/>.
             </summary>
         </member>
-        <member name="M:ADN.Extensions.IntegerExtensions.RoundNumber(System.Double,System.Int32)">
+        <member name="M:ADN.Extensions.DoubleExtensions.RoundNumber(System.Double,System.Double)">
             <summary>
-            Rounds a value to the nearest integer with the given step.
+            Rounds a value to the nearest integral value with the given step.
             </summary>
             <param name="value">A double-precision floating-point number to be rounded.</param>
             <param name="step">Step number to round.</param>
@@ -428,9 +435,9 @@
             </code>
             </example>
         </member>
-        <member name="M:ADN.Extensions.IntegerExtensions.RoundNumber(System.Double,System.Int32,System.Int32,System.Int32)">
+        <member name="M:ADN.Extensions.DoubleExtensions.RoundNumber(System.Double,System.Double,System.Double,System.Double)">
             <summary>
-            Rounds a value to the nearest integer with the given step and within the determined range.
+            Rounds a value to the nearest integral value with the given step and within the determined range.
             </summary>
             <param name="value">A double-precision floating-point number to be rounded.</param>
             <param name="step">Step number to round.</param>
@@ -828,6 +835,17 @@
             <param name="str">String to pad center.</param>
             <param name="maxLength">Maximum length of space to fill.</param>
             <returns>Pad center string.</returns>
+            <example>
+            <code lang="csharp">
+            var value = "abc";
+            var maxLength = 5;
+            var result = value.PacCenter(maxLength);
+            
+            /*
+            result is " abc "
+            */
+            </code>
+            </example>
         </member>
         <member name="M:ADN.Extensions.StringExtensions.TrimNonPrintableAscii(System.String)">
             <summary>
