@@ -99,32 +99,6 @@ namespace ADN.Extensions
         }
 
         /// <summary>
-        /// Shuffle the elements of the list.
-        /// </summary>
-        /// <typeparam name="T">The type of the elements of the list.</typeparam>
-        /// <param name="values">The list of elements.</param>
-        /// <example>
-        /// <code lang="csharp">
-        /// var values = new double[] { 0, 1, 2, 3, 4, 5 };
-        /// values.Shuffle();
-        /// </code>
-        /// </example>
-        public static void Shuffle<T>(this IList<T> values)
-        {
-            Random rng = new Random();
-            int n = values.Count;
-
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(n + 1);
-                T value = values[k];
-                values[k] = values[n];
-                values[n] = value;
-            }
-        }
-
-        /// <summary>
         /// Gets the value of the middle element of the list after sorted.
         /// </summary>
         /// <param name="values">The list of elements.</param>
@@ -244,6 +218,71 @@ namespace ADN.Extensions
         }
 
         /// <summary>
+        /// Shuffle the elements of the list.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of the list.</typeparam>
+        /// <param name="values">The list of elements.</param>
+        /// <example>
+        /// <code lang="csharp">
+        /// var values = new double[] { 0, 1, 2, 3, 4, 5 };
+        /// values.Shuffle();
+        /// </code>
+        /// </example>
+        public static void Shuffle<T>(this IList<T> values)
+        {
+            Random rng = new Random();
+            int n = values.Count;
+
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = values[k];
+                values[k] = values[n];
+                values[n] = value;
+            }
+        }
+
+        /// <summary>
+        /// Calculate the standard deviation of the values of the list.
+        /// </summary>
+        /// <param name="values">The list of elements.</param>
+        /// <returns>Standard deviation.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+        /// var result = values.StandardDeviation();
+        /// </code>
+        /// </example>
+        public static double StandardDeviation(this List<double> values)
+        {
+            return values.Count == 0 ? 0 : values.StandardDeviation(0, values.Count);
+        }
+
+        /// <summary>
+        /// Calculate the standard deviation of the values of the list of a given range.
+        /// </summary>
+        /// <param name="values">The list of elements.</param>
+        /// <param name="start">Start index.</param>
+        /// <param name="end">End index.</param>
+        /// <returns>Standard deviation.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// int start = 0;
+        /// int end = 5;
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+        /// var result = values.StandardDeviation(start, end);
+        /// </code>
+        /// </example>
+        public static double StandardDeviation(this List<double> values, int start, int end)
+        {
+            double mean = values.Mean(start, end);
+            double variance = values.Variance(mean, start, end);
+
+            return Math.Sqrt(variance);
+        }
+
+        /// <summary>
         /// Calculate the variance of the values of the list.
         /// </summary>
         /// <param name="values">The list of elements.</param>
@@ -307,45 +346,6 @@ namespace ADN.Extensions
             if (start > 0) n--;
 
             return variance / n;
-        }
-
-        /// <summary>
-        /// Calculate the standard deviation of the values of the list.
-        /// </summary>
-        /// <param name="values">The list of elements.</param>
-        /// <returns>Standard deviation.</returns>
-        /// <example>
-        /// <code lang="csharp">
-        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
-        /// var result = values.StandardDeviation();
-        /// </code>
-        /// </example>
-        public static double StandardDeviation(this List<double> values)
-        {
-            return values.Count == 0 ? 0 : values.StandardDeviation(0, values.Count);
-        }
-
-        /// <summary>
-        /// Calculate the standard deviation of the values of the list of a given range.
-        /// </summary>
-        /// <param name="values">The list of elements.</param>
-        /// <param name="start">Start index.</param>
-        /// <param name="end">End index.</param>
-        /// <returns>Standard deviation.</returns>
-        /// <example>
-        /// <code lang="csharp">
-        /// int start = 0;
-        /// int end = 5;
-        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
-        /// var result = values.StandardDeviation(start, end);
-        /// </code>
-        /// </example>
-        public static double StandardDeviation(this List<double> values, int start, int end)
-        {
-            double mean = values.Mean(start, end);
-            double variance = values.Variance(mean, start, end);
-
-            return Math.Sqrt(variance);
         }
     }
 }

@@ -39,72 +39,6 @@ namespace ADN.Extensions.Tests
         }
 
         [Theory]
-        [ClassData(typeof(ShuffleData))]
-        public void Shuffle(double[] values)
-        {
-            double[] original = new double[values.Length];
-            Array.Copy(values, 0, original, 0, values.Length);
-
-            values.Shuffle();
-
-            // check length
-            bool ok = values.Length == original.Length;
-
-            if (ok)
-            {
-                ok = false;
-
-                if (values.Length == 1)
-                {
-                    ok = true;
-                }
-                else
-                {
-                    // check shuffle
-                    for (int i = 0; i < values.Length; i++)
-                    {
-                        if (values[i] != original[i])
-                        {
-                            ok = true;
-                            break;
-                        }
-                    }
-                }
-
-                // check same elements
-                for (int i = 0; i < values.Length; i++)
-                {
-                    int countValues = 0;
-                    int countOriginal = 0;
-
-                    for (int j = 0; j < values.Length; j++)
-                    {
-                        if (values[j] == values[i])
-                        {
-                            countValues++;
-                        }
-                    }
-
-                    for (int j = 0; j < original.Length; j++)
-                    {
-                        if (original[j] == values[i])
-                        {
-                            countOriginal++;
-                        }
-                    }
-
-                    if (countValues != countOriginal)
-                    {
-                        ok = false;
-                        break;
-                    }
-                }
-            }
-
-            Assert.True(ok);
-        }
-
-        [Theory]
         [ClassData(typeof(MedianData))]
         public void Median(double[] values, double expected)
         {
@@ -183,6 +117,72 @@ namespace ADN.Extensions.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => list.Mean(0, 2));
         }
 
+        [Theory]
+        [ClassData(typeof(ShuffleData))]
+        public void Shuffle(double[] values)
+        {
+            double[] original = new double[values.Length];
+            Array.Copy(values, 0, original, 0, values.Length);
+
+            values.Shuffle();
+
+            // check length
+            bool ok = values.Length == original.Length;
+
+            if (ok)
+            {
+                ok = false;
+
+                if (values.Length == 1)
+                {
+                    ok = true;
+                }
+                else
+                {
+                    // check shuffle
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (values[i] != original[i])
+                        {
+                            ok = true;
+                            break;
+                        }
+                    }
+                }
+
+                // check same elements
+                for (int i = 0; i < values.Length; i++)
+                {
+                    int countValues = 0;
+                    int countOriginal = 0;
+
+                    for (int j = 0; j < values.Length; j++)
+                    {
+                        if (values[j] == values[i])
+                        {
+                            countValues++;
+                        }
+                    }
+
+                    for (int j = 0; j < original.Length; j++)
+                    {
+                        if (original[j] == values[i])
+                        {
+                            countOriginal++;
+                        }
+                    }
+
+                    if (countValues != countOriginal)
+                    {
+                        ok = false;
+                        break;
+                    }
+                }
+            }
+
+            Assert.True(ok);
+        }
+
         public class IndexOfMaxData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
@@ -204,17 +204,6 @@ namespace ADN.Extensions.Tests
                 yield return new object[] { new double[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 }, 9 };
                 yield return new object[] { new double[] { 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5 }, 5 };
                 yield return new object[] { new double[] { 2, 2, 1, 1, 0, 0, 1, 1, 2, 2 }, 5 };
-            }
-
-            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-        }
-
-        public class ShuffleData : IEnumerable<object[]>
-        {
-            public IEnumerator<object[]> GetEnumerator()
-            {
-                yield return new object[] { new double[] { 0 } };
-                yield return new object[] { new double[] { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 } };
             }
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -284,6 +273,17 @@ namespace ADN.Extensions.Tests
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 0, 9, 4.5 };
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 1, 8, 4.5 };
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 0, 5, 2.5 };
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
+        public class ShuffleData : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                yield return new object[] { new double[] { 0 } };
+                yield return new object[] { new double[] { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 } };
             }
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
