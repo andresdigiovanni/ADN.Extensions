@@ -118,6 +118,18 @@ namespace ADN.Extensions.Tests
         }
 
         [Theory]
+        [ClassData(typeof(RescaleData))]
+        public void Rescale(double[] values, double factor, bool round, double[] expected)
+        {
+            var list = new List<double>();
+            list.AddRange(values);
+            var result = list.Rescale(factor);
+            result = round ? result.Select(x => Math.Round(x)).ToList() : result;
+            
+            Assert.Equal(expected, result.ToArray());
+        }
+
+        [Theory]
         [ClassData(typeof(ShuffleData))]
         public void Shuffle(double[] values)
         {
@@ -273,6 +285,23 @@ namespace ADN.Extensions.Tests
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 0, 9, 4.5 };
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 1, 8, 4.5 };
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 0, 5, 2.5 };
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
+        public class RescaleData : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                yield return new object[] { new double[] { }, 1, false, new double[] { } };
+                yield return new object[] { new double[] { 0 }, 1, false, new double[] { 0 } };
+                yield return new object[] { new double[] { 0, 1, 2, 3 }, 1, false, new double[] { 0, 1, 2, 3 } };
+                yield return new object[] { new double[] { 0, 1 }, 2, false, new double[] { 0, 0.5, 1 } };
+                yield return new object[] { new double[] { 0, 1, 2 }, 2, false, new double[] { 0, 0.5, 1, 1.5, 2 } };
+                yield return new object[] { new double[] { 0, 1, 2 }, 0.5, false, new double[] { 0, 2 } };
+                yield return new object[] { new double[] { 0, 1, 2, 3, 4 }, 0.5, false, new double[] { 0, 2, 4 } };
+                yield return new object[] { new double[] { 0, 3, 6, 9, 12 }, 0.75, true, new double[] { 0, 4, 8, 12 } };
             }
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

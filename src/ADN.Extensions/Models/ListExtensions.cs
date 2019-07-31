@@ -218,6 +218,47 @@ namespace ADN.Extensions
         }
 
         /// <summary>
+        /// Scale a list of double and all the elements with the factor value.
+        /// </summary>
+        /// <param name="values">The list of elements.</param>
+        /// <param name="factor">Scale factor.</param>
+        /// <returns>List of double and all the elements scaled.</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// double factor = 0.5;
+        /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4 };]]>
+        /// var result = values.Rescale(factor);
+        /// 
+        /// /*
+        /// result is { 0, 2, 4 }
+        /// */
+        /// </code>
+        /// </example>
+        public static List<double> Rescale(this List<double> values, double factor)
+        {
+            var result = new List<double>();
+            double step = 1 / factor;
+            double index = 0;
+
+            while (index <= values.Count - 1)
+            {
+                var hIndex = (int)Math.Ceiling(index);
+                hIndex = hIndex < values.Count ? hIndex : values.Count - 1;
+                var lIndex = (int)Math.Floor(index);
+                var distance = index - Math.Truncate(index);
+
+                var value =
+                    (values[lIndex] * (1 - distance)) +
+                    (values[hIndex] * distance);
+                result.Add(value);
+
+                index += step;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Shuffle the elements of the list.
         /// </summary>
         /// <typeparam name="T">The type of the elements of the list.</typeparam>
