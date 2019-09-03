@@ -9,6 +9,23 @@ ADN.Extensions is a cross-platform open-source library which provides extensions
 [![Quality](https://sonarcloud.io/api/project_badges/measure?project=andresdigiovanni_ADN.Extensions&metric=alert_status)](https://sonarcloud.io/dashboard?id=andresdigiovanni_ADN.Extensions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Basic usage
+
+Example Dictionary extensions:
+
+```csharp
+var dictionary = new Dictionary<string, int>
+{
+    { "Luke", 1 },
+    { "Skywalker", 2 }
+};
+dictionary.RemoveAll(value => value == 2);
+
+/*
+ dictionary contains the values [ {"Luke", 1} ]
+ */
+```
+
 ## Installation
 
 ADN.Extensions runs on Windows, Linux, and macOS.
