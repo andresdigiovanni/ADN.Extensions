@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- IntegerExtensions.
+- ComplexExtensions, IntegerExtensions.
 
 ## [1.3.0] - 2019-08-04
 ### Added
