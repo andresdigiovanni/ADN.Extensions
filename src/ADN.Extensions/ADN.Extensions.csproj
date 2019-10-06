@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProjectGuid>{55BA7F64-D78D-4FA5-AFA0-1FF9AA54E7D1}</ProjectGuid>
-    <Version>1.3.0</Version>
+    <Version>1.4.0</Version>
     <Title>ADN.Extensions</Title>
     <Authors>Andrés Di Giovanni</Authors>
     <Company>ADN</Company>
@@ -13,7 +13,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://github.com/andresdigiovanni/ADN.Extensions/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/andresdigiovanni/ADN.Extensions</PackageProjectUrl>
-    <PackageTags>Extensions; Array; Base64; Byte; DataTable; DateTime; Dictionary; Integer; Number; List; Object; String</PackageTags>
+    <PackageTags>Extensions; Array; Base64; Byte; Complex; DataTable; DateTime; Dictionary; Integer; Number; List; Object; String</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl> 
     <RepositoryUrl>https://github.com/andresdigiovanni/ADN.Extensions</RepositoryUrl> 
     <PackageIconUrl>https://raw.githubusercontent.com/andresdigiovanni/ADN.Extensions/master/icon.png</PackageIconUrl>
