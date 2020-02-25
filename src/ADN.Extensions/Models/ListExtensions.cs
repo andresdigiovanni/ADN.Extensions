@@ -9,6 +9,16 @@ namespace ADN.Extensions
     /// </summary>
     public static class ListExtensions
     {
+        public static IList<T> Clone<T>(this IList<T> listToClone)
+        {
+            return listToClone.Select(item => item).ToList();
+        }
+
+        public static IList<T> DeepClone<T>(this IList<T> listToClone) where T : ICloneable
+        {
+            return listToClone.Select(item => (T)item.Clone()).ToList();
+        }
+
         /// <summary>
         /// Find the index of the maximum value of the list.
         /// </summary>
@@ -19,7 +29,7 @@ namespace ADN.Extensions
         /// <code lang="csharp">
         /// var values = new double[] { 10, 11, 12, 13, 12, 11, 10 };
         /// var result = values.IndexOfMax();
-        /// 
+        ///
         /// /*
         /// result is 3
         /// */
@@ -52,7 +62,7 @@ namespace ADN.Extensions
         /// <code lang="csharp">
         /// var values = new double[] { 13, 12, 11, 10, 11, 12, 13 };
         /// var result = values.IndexOfMin();
-        /// 
+        ///
         /// /*
         /// result is 3
         /// */
@@ -87,7 +97,7 @@ namespace ADN.Extensions
         /// var first = new double[] { 0, 1 };
         /// var second = new double[] { 1, 0 };
         /// var result = first.IsSame(second);
-        /// 
+        ///
         /// /*
         /// result is true
         /// */
@@ -107,7 +117,7 @@ namespace ADN.Extensions
         /// <code lang="csharp">
         /// var values = new double[] { 2, 3, 5, 1, 4 };
         /// var result = values.Median();
-        /// 
+        ///
         /// /*
         /// result is 3
         /// */
@@ -131,7 +141,7 @@ namespace ADN.Extensions
         /// int end = 2;
         /// var values = new double[] { 2, 3, 5, 1, 4 };
         /// var result = values.Median();
-        /// 
+        ///
         /// /*
         /// result is 2
         /// */
@@ -169,7 +179,7 @@ namespace ADN.Extensions
         /// <code lang="csharp">
         /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
         /// var result = values.Mean();
-        /// 
+        ///
         /// /*
         /// result is 4.5
         /// */
@@ -194,7 +204,7 @@ namespace ADN.Extensions
         /// int end = 5;
         /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
         /// var result = values.Mean(start, end);
-        /// 
+        ///
         /// /*
         /// result is 2.5
         /// */
@@ -218,30 +228,36 @@ namespace ADN.Extensions
         }
 
         /// <summary>
-        /// Scale a list of double and all the elements with the factor value.
+        /// Scale a list of double, and all the elements, to the new length.
         /// </summary>
         /// <param name="values">The list of elements.</param>
-        /// <param name="factor">Scale factor.</param>
+        /// <param name="length">New list length.</param>
         /// <returns>List of double and all the elements scaled.</returns>
         /// <example>
         /// <code lang="csharp">
-        /// double factor = 0.5;
+        /// int length = 3;
         /// <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4 };]]>
-        /// var result = values.Rescale(factor);
-        /// 
+        /// var result = values.RescaleLength(length);
+        ///
         /// /*
         /// result is { 0, 2, 4 }
         /// */
         /// </code>
         /// </example>
-        public static List<double> Rescale(this List<double> values, double factor)
+        public static List<double> RescaleLength(this List<double> values, int length)
         {
-            var result = new List<double>();
-            double step = 1 / factor;
-            double index = 0;
-
-            while (index <= values.Count - 1)
+            if (values.Count == length)
             {
+                values.Clone();
+            }
+
+            var result = new List<double>();
+            double step = values.Count / (double)length;
+            int n = 0;
+
+            while (n < length)
+            {
+                var index = step * n;
                 var hIndex = (int)Math.Ceiling(index);
                 hIndex = hIndex < values.Count ? hIndex : values.Count - 1;
                 var lIndex = (int)Math.Floor(index);
@@ -252,7 +268,7 @@ namespace ADN.Extensions
                     (values[hIndex] * distance);
                 result.Add(value);
 
-                index += step;
+                n++;
             }
 
             return result;

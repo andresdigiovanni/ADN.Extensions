@@ -519,156 +519,156 @@
             </summary>
         </member>
         <member name="M:ADN.Extensions.ListExtensions.IndexOfMax``1(System.Collections.Generic.IList{``0})">
-            <summary>
-            Find the index of the maximum value of the list.
-            </summary>
-            <typeparam name="T">The type of the elements of the list.</typeparam>
-            <param name="values">The list of elements.</param>
-            <returns>Index of the maximum value of the list.</returns>
-            <example>
-            <code lang="csharp">
-            var values = new double[] { 10, 11, 12, 13, 12, 11, 10 };
-            var result = values.IndexOfMax();
+             <summary>
+             Find the index of the maximum value of the list.
+             </summary>
+             <typeparam name="T">The type of the elements of the list.</typeparam>
+             <param name="values">The list of elements.</param>
+             <returns>Index of the maximum value of the list.</returns>
+             <example>
+             <code lang="csharp">
+             var values = new double[] { 10, 11, 12, 13, 12, 11, 10 };
+             var result = values.IndexOfMax();
             
-            /*
-            result is 3
-            */
-            </code>
-            </example>
+             /*
+             result is 3
+             */
+             </code>
+             </example>
         </member>
         <member name="M:ADN.Extensions.ListExtensions.IndexOfMin``1(System.Collections.Generic.IList{``0})">
-            <summary>
-            Find the index of the minimum value of the list.
-            </summary>
-            <typeparam name="T">The type of the elements of the list.</typeparam>
-            <param name="values">The list of elements.</param>
-            <returns>Index of the minimum value of the list.</returns>
-            <example>
-            <code lang="csharp">
-            var values = new double[] { 13, 12, 11, 10, 11, 12, 13 };
-            var result = values.IndexOfMin();
+             <summary>
+             Find the index of the minimum value of the list.
+             </summary>
+             <typeparam name="T">The type of the elements of the list.</typeparam>
+             <param name="values">The list of elements.</param>
+             <returns>Index of the minimum value of the list.</returns>
+             <example>
+             <code lang="csharp">
+             var values = new double[] { 13, 12, 11, 10, 11, 12, 13 };
+             var result = values.IndexOfMin();
             
-            /*
-            result is 3
-            */
-            </code>
-            </example>
+             /*
+             result is 3
+             */
+             </code>
+             </example>
         </member>
         <member name="M:ADN.Extensions.ListExtensions.IsSame``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
-            <summary>
-            Determine if two sequences contains exactly the same elements.
-            </summary>
-            <typeparam name="T">The type of the elements of the list.</typeparam>
-            <param name="first">The first list of elements.</param>
-            <param name="second">The second list of elements.</param>
-            <returns>True if two sequences contains exactly the same elements, false otherwise.</returns>
-            <example>
-            <code lang="csharp">
-            var first = new double[] { 0, 1 };
-            var second = new double[] { 1, 0 };
-            var result = first.IsSame(second);
+             <summary>
+             Determine if two sequences contains exactly the same elements.
+             </summary>
+             <typeparam name="T">The type of the elements of the list.</typeparam>
+             <param name="first">The first list of elements.</param>
+             <param name="second">The second list of elements.</param>
+             <returns>True if two sequences contains exactly the same elements, false otherwise.</returns>
+             <example>
+             <code lang="csharp">
+             var first = new double[] { 0, 1 };
+             var second = new double[] { 1, 0 };
+             var result = first.IsSame(second);
             
-            /*
-            result is true
-            */
-            </code>
-            </example>
+             /*
+             result is true
+             */
+             </code>
+             </example>
         </member>
         <member name="M:ADN.Extensions.ListExtensions.Median(System.Collections.Generic.List{System.Double})">
-            <summary>
-            Gets the value of the middle element of the list after sorted.
-            </summary>
-            <param name="values">The list of elements.</param>
-            <returns>Index of the middle element.</returns>
-            <example>
-            <code lang="csharp">
-            var values = new double[] { 2, 3, 5, 1, 4 };
-            var result = values.Median();
+             <summary>
+             Gets the value of the middle element of the list after sorted.
+             </summary>
+             <param name="values">The list of elements.</param>
+             <returns>Index of the middle element.</returns>
+             <example>
+             <code lang="csharp">
+             var values = new double[] { 2, 3, 5, 1, 4 };
+             var result = values.Median();
             
-            /*
-            result is 3
-            */
-            </code>
-            </example>
+             /*
+             result is 3
+             */
+             </code>
+             </example>
         </member>
         <member name="M:ADN.Extensions.ListExtensions.Median(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)">
-            <summary>
-            Gets the value of the middle element of the list after sorted of a given range.
-            </summary>
-            <param name="values">The list of elements.</param>
-            <param name="start">Start index.</param>
-            <param name="end">End index.</param>
-            <returns>Index of the middle element.</returns>
-            <example>
-            <code lang="csharp">
-            int start = 0;
-            int end = 2;
-            var values = new double[] { 2, 3, 5, 1, 4 };
-            var result = values.Median();
+             <summary>
+             Gets the value of the middle element of the list after sorted of a given range.
+             </summary>
+             <param name="values">The list of elements.</param>
+             <param name="start">Start index.</param>
+             <param name="end">End index.</param>
+             <returns>Index of the middle element.</returns>
+             <example>
+             <code lang="csharp">
+             int start = 0;
+             int end = 2;
+             var values = new double[] { 2, 3, 5, 1, 4 };
+             var result = values.Median();
             
-            /*
-            result is 2
-            */
-            </code>
-            </example>
+             /*
+             result is 2
+             */
+             </code>
+             </example>
         </member>
         <member name="M:ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double})">
-            <summary>
-            Gets the mean of the values of the list.
-            </summary>
-            <param name="values">The list of elements.</param>
-            <returns>Mean of the values.</returns>
-            <example>
-            <code lang="csharp">
-            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
-            var result = values.Mean();
+             <summary>
+             Gets the mean of the values of the list.
+             </summary>
+             <param name="values">The list of elements.</param>
+             <returns>Mean of the values.</returns>
+             <example>
+             <code lang="csharp">
+             <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+             var result = values.Mean();
             
-            /*
-            result is 4.5
-            */
-            </code>
-            </example>
+             /*
+             result is 4.5
+             */
+             </code>
+             </example>
         </member>
         <member name="M:ADN.Extensions.ListExtensions.Mean(System.Collections.Generic.List{System.Double},System.Int32,System.Int32)">
-            <summary>
-            Gets the mean of the values of the list of a given range.
-            </summary>
-            <param name="values">The list of elements.</param>
-            <param name="start">Start index.</param>
-            <param name="end">End index.</param>
-            <returns>Mean of the values.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">Start or end out of range.</exception>
-            <example>
-            <code lang="csharp">
-            int start = 0;
-            int end = 5;
-            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
-            var result = values.Mean(start, end);
+             <summary>
+             Gets the mean of the values of the list of a given range.
+             </summary>
+             <param name="values">The list of elements.</param>
+             <param name="start">Start index.</param>
+             <param name="end">End index.</param>
+             <returns>Mean of the values.</returns>
+             <exception cref="T:System.ArgumentOutOfRangeException">Start or end out of range.</exception>
+             <example>
+             <code lang="csharp">
+             int start = 0;
+             int end = 5;
+             <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
+             var result = values.Mean(start, end);
             
-            /*
-            result is 2.5
-            */
-            </code>
-            </example>
+             /*
+             result is 2.5
+             */
+             </code>
+             </example>
         </member>
-        <member name="M:ADN.Extensions.ListExtensions.Rescale(System.Collections.Generic.List{System.Double},System.Double)">
-            <summary>
-            Scale a list of double and all the elements with the factor value.
-            </summary>
-            <param name="values">The list of elements.</param>
-            <param name="factor">Scale factor.</param>
-            <returns>List of double and all the elements scaled.</returns>
-            <example>
-            <code lang="csharp">
-            double factor = 0.5;
-            <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4 };]]>
-            var result = values.Rescale(factor);
+        <member name="M:ADN.Extensions.ListExtensions.RescaleLength(System.Collections.Generic.List{System.Double},System.Int32)">
+             <summary>
+             Scale a list of double, and all the elements, to the new length.
+             </summary>
+             <param name="values">The list of elements.</param>
+             <param name="length">New list length.</param>
+             <returns>List of double and all the elements scaled.</returns>
+             <example>
+             <code lang="csharp">
+             int length = 3;
+             <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4 };]]>
+             var result = values.RescaleLength(length);
             
-            /*
-            result is { 0, 2, 4 }
-            */
-            </code>
-            </example>
+             /*
+             result is { 0, 2, 4 }
+             */
+             </code>
+             </example>
         </member>
         <member name="M:ADN.Extensions.ListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})">
             <summary>
@@ -757,6 +757,89 @@
             double mean = 2.5;
             <![CDATA[var values = new List<double>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };]]>
             var result = values.Variance(mean, start, end);
+            </code>
+            </example>
+        </member>
+        <member name="T:ADN.Extensions.MatrixExtensions">
+            <summary>
+            A static class of extension methods for <see cref="T:System.Array"/>.
+            </summary>
+        </member>
+        <member name="M:ADN.Extensions.MatrixExtensions.GetColumn``1(``0[0:,0:],System.Int32)">
+            <summary>
+            Get the values of specific column of the matrix.
+            </summary>
+            <typeparam name="T">Array type.</typeparam>
+            <param name="matrix">The <see cref="T:System.Array"/> to get the values.</param>
+            <param name="columnNumber">Column index to get the values.</param>
+            <returns>Values of specific column of the matrix.</returns>
+            <example>
+            <code lang="csharp">
+            var matrix = new int[,]
+            {
+                { 0, 1, 2 },
+                { 3, 4, 5 }
+            };
+            var columnNumber = 0;
+            var result = matrix.GetColumn(columnNumber);
+            
+            /*
+            result is { 0, 3 }
+            */
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.MatrixExtensions.GetRow``1(``0[0:,0:],System.Int32)">
+            <summary>
+            Get the values of specific row of the matrix.
+            </summary>
+            <typeparam name="T">Array type.</typeparam>
+            <param name="matrix">The <see cref="T:System.Array"/> to get the values.</param>
+            <param name="rowNumber">Row index to get the values.</param>
+            <returns>Values of specific row of the matrix.</returns>
+            <example>
+            <code lang="csharp">
+            var matrix = new int[,]
+            {
+                { 0, 1, 2 },
+                { 3, 4, 5 }
+            };
+            var rowNumber = 0;
+            var result = matrix.GetColumn(rowNumber);
+            
+            /*
+            result is { 0, 1, 2 }
+            */
+            </code>
+            </example>
+        </member>
+        <member name="M:ADN.Extensions.MatrixExtensions.IgnoreDimension``1(``0[0:,0:,0:],System.Int32)">
+            <summary>
+            Get a sub-matrix ignoring a specific dimension.
+            </summary>
+            <typeparam name="T">Array type.</typeparam>
+            <param name="matrix">The <see cref="T:System.Array"/> to get the values.</param>
+            <param name="dimension">Specific dimension to ignore the values.</param>
+            <returns>Values ignoring a specific dimension.</returns>
+            <example>
+            <code lang="csharp">
+            var matrix = new int[,,]
+            {
+                {
+                    { 0, 1 },
+                    { 2, 3 }
+                },
+                {
+                    { 4, 5 },
+                    { 6, 7 }
+                }
+            };
+            var dimension = 0;
+            var result = matrix.IgnoreDimension(dimension);
+            
+            /*
+            result is { { 0, 1 }, { 2, 3 } }
+            */
             </code>
             </example>
         </member>

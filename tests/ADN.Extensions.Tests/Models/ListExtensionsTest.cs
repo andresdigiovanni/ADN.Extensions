@@ -119,13 +119,13 @@ namespace ADN.Extensions.Tests
 
         [Theory]
         [ClassData(typeof(RescaleData))]
-        public void Rescale(double[] values, double factor, bool round, double[] expected)
+        public void RescaleLength(double[] values, int length, double[] expected)
         {
             var list = new List<double>();
             list.AddRange(values);
-            var result = list.Rescale(factor);
-            result = round ? result.Select(x => Math.Round(x)).ToList() : result;
-            
+            var result = list.RescaleLength(length);
+            result = result.Select(x => Math.Round(x)).ToList();
+
             Assert.Equal(expected, result.ToArray());
         }
 
@@ -294,14 +294,14 @@ namespace ADN.Extensions.Tests
         {
             public IEnumerator<object[]> GetEnumerator()
             {
-                yield return new object[] { new double[] { }, 1, false, new double[] { } };
-                yield return new object[] { new double[] { 0 }, 1, false, new double[] { 0 } };
-                yield return new object[] { new double[] { 0, 1, 2, 3 }, 1, false, new double[] { 0, 1, 2, 3 } };
-                yield return new object[] { new double[] { 0, 1 }, 2, false, new double[] { 0, 0.5, 1 } };
-                yield return new object[] { new double[] { 0, 1, 2 }, 2, false, new double[] { 0, 0.5, 1, 1.5, 2 } };
-                yield return new object[] { new double[] { 0, 1, 2 }, 0.5, false, new double[] { 0, 2 } };
-                yield return new object[] { new double[] { 0, 1, 2, 3, 4 }, 0.5, false, new double[] { 0, 2, 4 } };
-                yield return new object[] { new double[] { 0, 3, 6, 9, 12 }, 0.75, true, new double[] { 0, 4, 8, 12 } };
+                yield return new object[] { new double[] { }, 0, new double[] { } };
+                yield return new object[] { new double[] { 0 }, 1, new double[] { 0 } };
+                yield return new object[] { new double[] { 0, 1, 2, 3 }, 4, new double[] { 0, 1, 2, 3 } };
+                yield return new object[] { new double[] { 0, 1 }, 3, new double[] { 0, 1, 1 } };
+                yield return new object[] { new double[] { 0, 1, 2 }, 5, new double[] { 0, 1, 1, 2, 2 } };
+                yield return new object[] { new double[] { 0, 1, 2 }, 2, new double[] { 0, 2 } };
+                yield return new object[] { new double[] { 0, 1, 2, 3, 4 }, 3, new double[] { 0, 2, 3 } };
+                yield return new object[] { new double[] { 0, 3, 6, 9, 12 }, 4, new double[] { 0, 4, 8, 11 } };
             }
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
