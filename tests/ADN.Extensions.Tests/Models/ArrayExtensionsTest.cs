@@ -99,6 +99,15 @@ namespace ADN.Extensions.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => ArrayExtensions.SubArray(list, -1, 1));
         }
 
+        [Theory]
+        [ClassData(typeof(SumCorrespondingElementsData))]
+        public void SumCorrespondingElements(double[] first, double[] second, double[] expected)
+        {
+            var result = first.SumCorrespondingElements(second);
+
+            Assert.Equal(expected, result);
+        }
+
         public class ArrayEqualData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
@@ -236,6 +245,21 @@ namespace ADN.Extensions.Tests
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5 }, 0, 1, new double[] { 0 } };
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5 }, 5, 1, new double[] { 5 } };
                 yield return new object[] { new double[] { 0, 1, 2, 3, 4, 5 }, 0, 0, new double[] { } };
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
+        public class SumCorrespondingElementsData : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                yield return new object[] { new double[] { }, new double[] { }, new double[] { } };
+                yield return new object[] { new double[] { }, new double[] { 10, 11, 12, 13 }, new double[] { 10, 11, 12, 13 } };
+                yield return new object[] { new double[] { 0, 1, 2, 3 }, new double[] { }, new double[] { 0, 1, 2, 3 } };
+                yield return new object[] { new double[] { 0, 1, 2, 3 }, new double[] { 10, 11, 12, 13 }, new double[] { 10, 12, 14, 16 } };
+                yield return new object[] { new double[] { 0, 1 }, new double[] { 10, 11, 12, 13 }, new double[] { 10, 12, 12, 13 } };
+                yield return new object[] { new double[] { 0, 1, 2, 3 }, new double[] { 10, 11 }, new double[] { 10, 12, 2, 3 } };
             }
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

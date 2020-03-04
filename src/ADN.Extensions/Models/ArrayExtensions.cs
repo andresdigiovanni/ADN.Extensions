@@ -21,7 +21,7 @@ namespace ADN.Extensions
         /// var first= new double[] { 0, 0, 0, 0, 0 };
         /// var second = new double[] { 0, 0, 0, 0, 0 };
         /// var result = first.ArrayEqual(second);
-        /// 
+        ///
         /// /*
         /// result is true
         /// */
@@ -67,7 +67,7 @@ namespace ADN.Extensions
         /// var first= new double[] { 0, 1, 2 };
         /// var second = new double[] { 3, 4, 5 };
         /// var result = first.Combine(second);
-        /// 
+        ///
         /// /*
         /// result contains the values { 0, 1, 2, 3, 4, 5 }
         /// */
@@ -93,7 +93,7 @@ namespace ADN.Extensions
         /// <code lang="csharp">
         /// var array = new double[] { 1, 2, 3, 4, 5 };
         /// var result = array.InsertIntoArray(2, 0);
-        /// 
+        ///
         /// /*
         /// result contains the values { 1, 2, 0, 3, 4, 5 }
         /// */
@@ -129,7 +129,7 @@ namespace ADN.Extensions
         /// <code lang="csharp">
         /// var array = new double[] { 0, 0, 0, 0, 0 };
         /// var result = array.SetAllValues(1);
-        /// 
+        ///
         /// /*
         /// result contains the values { 1, 1, 1, 1, 1 }
         /// */
@@ -158,7 +158,7 @@ namespace ADN.Extensions
         /// var array = new double[] { 0, 1, 2 };
         /// var numberOfDivisions = 2;
         /// var result = array.SplitByNumberOfDivisions(numberOfDivisions);
-        /// 
+        ///
         /// /*
         /// result contains the values { { 0, 1 }, { 2 } }
         /// */
@@ -199,7 +199,7 @@ namespace ADN.Extensions
         /// var array = new double[] { 0, 1, 2 };
         /// var elementsInDivision = 2;
         /// var result = array.SplitByNumberOfElementsInDivision(elementsInDivision);
-        /// 
+        ///
         /// /*
         /// result contains the values { { 0, 1 }, { 2 } }
         /// */
@@ -239,7 +239,7 @@ namespace ADN.Extensions
         /// var index = 1;
         /// var length = 4;
         /// var result = array.SubArray(index, length);
-        /// 
+        ///
         /// /*
         /// result contains the values { 1, 2, 3, 4 }
         /// */
@@ -249,6 +249,39 @@ namespace ADN.Extensions
         {
             T[] result = new T[length];
             Array.Copy(array, index, result, 0, length);
+            return result;
+        }
+
+        /// <summary>
+        /// Sum the corresponding elements of the Arrays.
+        /// </summary>
+        /// <param name="first">First array.</param>
+        /// <param name="second">Second array.</param>
+        /// <returns>T[].</returns>
+        /// <example>
+        /// <code lang="csharp">
+        /// var first= new double[] { 0, 1, 2 };
+        /// var second = new double[] { 3, 4, 5 };
+        /// var result = first.SumCorrespondingElements(second);
+        ///
+        /// /*
+        /// result contains the values { 3, 5, 7 }
+        /// */
+        /// </code>
+        /// </example>
+        public static double[] SumCorrespondingElements(this double[] first, double[] second)
+        {
+            int length = Math.Max(first.Length, second.Length);
+            var result = new double[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                double f = i < first.Length ? first[i] : 0;
+                double s = i < second.Length ? second[i] : 0;
+
+                result[i] = f + s;
+            }
+
             return result;
         }
     }
